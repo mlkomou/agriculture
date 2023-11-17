@@ -1,0 +1,7 @@
+{
+  "name": "agro-pastoral",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
