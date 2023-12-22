@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">agro-pastoral</string>
+    <string name="title_activity_main">agro-pastoral</string>
+    <string name="package_name">io.farm.app</string>
+    <string name="custom_url_scheme">io.farm.app</string>
+</resources>

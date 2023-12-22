@@ -1,0 +1,106 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-button fill="clear" mode="ios" (click)="closeModal()">
+          <ion-icon name="chevron-back" size="25"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div>
+    <ion-row style="padding: 15px;">
+      <ion-col size="8">
+        <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
+          <span style="font-size: 12px; color: green;">GENDER</span>
+        </div>
+
+        <h3>ID ITEM TO SAVE</h3>
+      </ion-col>
+
+      <ion-col size="4">
+        <img style="border-radius: 15px;" src="assets/img/cow-.jpg">
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div style="padding: 15px;">
+    <div [formGroup]="cowFrom">
+      <ion-item>
+        <ion-label position="floating">ID</ion-label>
+        <ion-input type="number" formControlName="id"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Gender</ion-label>
+              <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
+                <ion-select-option value="Sir">Sir</ion-select-option>
+                <ion-select-option value="Dame">Dame</ion-select-option>
+              </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Insemination Cost</ion-label>
+        <ion-input (ionInput)="getinseminationCost($event)" type="number" formControlName="inseminationCost"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Insemination Date</ion-label>
+        <ion-input type="date" formControlName="inseminationDate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Calving Date</ion-label>
+        <ion-input type="date" formControlName="calvingDate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Feed</ion-label>
+        <ion-input type="number" formControlName="feed"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Vet Cost</ion-label>
+        <ion-input type="number" formControlName="vetCost"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Milk Production</ion-label>
+        <ion-input type="number" formControlName="milkProduction"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Milk Price</ion-label>
+        <ion-input type="number" formControlName="milkPrice"></ion-input>
+      </ion-item>
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Expense</ion-label>-->
+<!--        <ion-input type="number" formControlName="expense"></ion-input>-->
+<!--      </ion-item>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Income</ion-label>-->
+<!--        <ion-input type="number" formControlName="income"></ion-input>-->
+<!--      </ion-item>-->
+
+<!--      <ion-item>-->
+<!--        <ion-label position="floating">Profit</ion-label>-->
+<!--        <ion-input [(ngModel)]="profitValue" readonly="" type="number" formControlName="profit"></ion-input>-->
+<!--      </ion-item>-->
+
+    </div>
+
+    <div>
+      <ion-button (click)="saveOrUpdata()" expand="block" shape="round">
+        Save Cow
+        <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

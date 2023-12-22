@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "area": 109,
+  "crop": "s",
+  "seedCost": 103,
+  "fertilizerCost1": 0,
+  "fertilizerCost2": 0,
+  "herbicideCost2": 0,
+  "laborCost2": 0,
+  "yield": 0,
+  "salePrice": 0,
+  "expense": 0,
+  "grosseIcome": 0,
+  "profit": 0
+}

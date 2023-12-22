@@ -1,20 +1,217 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <span style="padding: 15px;">
+      Good morning !
+      <img style="height: 30px;" src="assets/img/hello.jpg">
+    </span>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ion-card mode="ios">
+      <ion-row>
+        <ion-col class="ion-text-center" size="4">
+          <img style="height: 25px;" src="assets/img/flax-seed.png"> <br>
+          <span style="font-size: 12px;">Wind</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">5m/s</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <img style="height: 25px;" src="assets/img/flax-seed.png"> <br>
+          <span style="font-size: 12px;">Humidity</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">5m/s</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <img style="height: 25px;" src="assets/img/flax-seed.png"> <br>
+          <span style="font-size: 12px;">Precipitation</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">5m/s</span>
+        </ion-col>
+      </ion-row>
+    </ion-card>
   </div>
+
+  <div>
+    <ion-row>
+      <ion-col class="ion-text-center" size="6">
+       <ion-card (click)="goToCow()" class="itemCard" mode="ios" button="">
+         <img class="menuImage" src="assets/img/cow.png">  <br>
+         <span class="menuTitle">Elevage</span>
+       </ion-card>
+      </ion-col>
+
+      <ion-col class="ion-text-center" size="6">
+        <ion-card class="itemCard" mode="ios" button="">
+          <img class="menuImage" src="assets/img/flax-seed.png"> <br>
+          <span class="menuTitle">Agriculture</span>
+        </ion-card>
+      </ion-col>
+
+      <ion-col class="ion-text-center" size="6">
+        <ion-card (click)="goToDash()" class="itemCard" mode="ios" button="">
+          <img class="menuImage" src="assets/img/dashboard.png">  <br>
+          <span class="menuTitle">Dashboard</span>
+        </ion-card>
+      </ion-col>
+
+      <ion-col class="ion-text-center" size="6">
+        <ion-card (click)="goToLearning()" class="itemCard" mode="ios" button="">
+          <img class="menuImage" src="assets/img/learning.png">  <br>
+          <span class="menuTitle">Learning</span>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+<!--  <div>-->
+<!--    <ion-row>-->
+<!--      <ion-col size="6">-->
+<!--        <ion-card class="menuCard">-->
+<!--         <div style="text-align: center">-->
+<!--           <img class="smallMenuIcon" src="assets/img/cow.png">-->
+<!--         </div>-->
+<!--          <div style="text-align: center; font-size: 12px;">-->
+<!--            <span>Cow</span> <br>-->
+<!--            <span style="font-weight: bold; color: black;">200</span>-->
+<!--          </div>-->
+<!--        </ion-card>-->
+<!--      </ion-col>-->
+
+<!--      <ion-col size="6">-->
+<!--        <ion-card class="menuCard">-->
+<!--          <div style="text-align: center">-->
+<!--            <img class="smallMenuIcon" src="assets/img/flax-seed.png">-->
+<!--          </div>-->
+<!--          <div style="text-align: center; font-size: 12px;">-->
+<!--            <span>Seed</span> <br>-->
+<!--            <span style="font-weight: bold; color: black;">200</span>-->
+<!--          </div>-->
+<!--        </ion-card>-->
+<!--      </ion-col>-->
+
+<!--      <ion-col size="6">-->
+<!--        <ion-card class="menuCard">-->
+<!--          <div style="text-align: center">-->
+<!--            <img class="smallMenuIcon" src="assets/img/flax-seed.png">-->
+<!--          </div>-->
+<!--          <div style="text-align: center; font-size: 12px;">-->
+<!--            <span>Profit</span> <br>-->
+<!--            <span style="font-weight: bold; color: black;">200</span>-->
+<!--          </div>-->
+<!--        </ion-card>-->
+<!--      </ion-col>-->
+
+<!--      <ion-col size="6">-->
+<!--        <ion-card class="menuCard">-->
+<!--          <div style="text-align: center">-->
+<!--            <img class="smallMenuIcon" src="assets/img/flax-seed.png">-->
+<!--          </div>-->
+<!--          <div style="text-align: center; font-size: 12px;">-->
+<!--            <span>Expense</span> <br>-->
+<!--            <span style="font-weight: bold; color: black;">200</span>-->
+<!--          </div>-->
+<!--        </ion-card>-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+<!--  </div>-->
+
+<!--  <ion-segment [(ngModel)]="currentTab" (ionChange)="getSgmentValue($event)">-->
+<!--    <ion-segment-button value="cow">-->
+<!--      <ion-label>Cow</ion-label>-->
+<!--    </ion-segment-button>-->
+<!--    <ion-segment-button value="seed">-->
+<!--      <ion-label>Seed</ion-label>-->
+<!--    </ion-segment-button>-->
+<!--    <ion-segment-button value="statistic">-->
+<!--      <ion-label>Statistics</ion-label>-->
+<!--    </ion-segment-button>-->
+<!--  </ion-segment>-->
+
+<!--  <div *ngIf="currentTab == 'seed'">-->
+<!--    <ion-item (click)="goToAdd(seed)" button="" lines="none" *ngFor="let seed of seeds">-->
+<!--      <ion-thumbnail slot="start">-->
+<!--        <img style="border-radius: 15px;" alt="Cow Image" src="assets/img/corn.png" />-->
+<!--      </ion-thumbnail>-->
+<!--      <ion-label>-->
+<!--        <h3>Seed Name {{seed?.id}} </h3>-->
+<!--        <p> <i>Area: {{seed?.area}}</i> </p>-->
+<!--        <p>Cost: <i>{{seed?.seedCost}}</i> </p>-->
+
+<!--      </ion-label>-->
+<!--    </ion-item>-->
+
+<!--    <ion-fab slot="fixed" horizontal="end" vertical="bottom">-->
+<!--      <ion-fab-button (click)="goToAdd(null)">-->
+<!--        <ion-icon name="add"></ion-icon>-->
+<!--      </ion-fab-button>-->
+<!--    </ion-fab>-->
+<!--  </div>-->
+<!--  <div *ngIf="currentTab == 'cow'">-->
+<!--    <ion-item (click)="goToAddCow(cow)" button="" lines="none" *ngFor="let cow of cows">-->
+<!--      <ion-thumbnail slot="start">-->
+<!--        <img style="border-radius: 15px;" alt="Cow Image" src="assets/img/cow-.jpg" />-->
+<!--      </ion-thumbnail>-->
+<!--      <ion-label>-->
+<!--        <h3>Cow {{cow?.id}} </h3>-->
+<!--        <p> <i>Gender: {{cow?.gender}}</i> </p>-->
+<!--        <p>Milk Price: <i>{{cow?.milkPrice}}</i> </p>-->
+<!--        <p>Milk Prod: <i>{{cow?.milkProduction}}</i> </p>-->
+
+<!--      </ion-label>-->
+<!--    </ion-item>-->
+
+<!--    <ion-fab slot="fixed" horizontal="end" vertical="bottom">-->
+<!--      <ion-fab-button (click)="goToAdd(null)">-->
+<!--        <ion-icon name="add"></ion-icon>-->
+<!--      </ion-fab-button>-->
+<!--    </ion-fab>-->
+<!--  </div>-->
+
+<!--  <div *ngIf="currentTab == 'statistic'">-->
+<!--    <div *ngIf="genderChart" [chart]="genderChart"></div>-->
+<!--    <div *ngIf="milkprodChart" [chart]="milkprodChart"></div>-->
+<!--  </div>-->
+
+
+
+<!--  <section class = "home-container">-->
+<!--    <div class="row row-center" >-->
+<!--      <div class="col text-center" >-->
+<!--        <div class="mainMenu">-->
+<!--          <ion-row class="menuContent">-->
+<!--            <ion-col size="6" class="ion-no-padding ion-no-margin ion-text-center">-->
+<!--              <ion-card (click)="goToFarm()" button="" class="menuCard ion-no-margin ion-no-padding">-->
+<!--                <img class="menuImg" src="assets/img/farm.png" alt="">-->
+<!--                <span class="menuTitle">Seed</span>-->
+<!--              </ion-card>-->
+<!--            </ion-col>-->
+
+<!--            <ion-col size="6" class="ion-no-padding ion-no-margin ion-text-center">-->
+<!--              <ion-card (click)="goToCow()" button="" class="menuCard ion-no-margin ion-no-padding">-->
+<!--                <img class="menuImg" src="assets/img/cow.png" alt="">-->
+<!--                <span class="menuTitle">Cow</span>-->
+<!--              </ion-card>-->
+<!--            </ion-col>-->
+
+<!--            <ion-col size="6" class="ion-no-padding ion-no-margin ion-text-center">-->
+<!--              <ion-card (click)="goToDash()" button="" class="menuCard ion-no-margin ion-no-padding">-->
+<!--                <img class="menuImg" src="assets/img/dashboard.png" alt="">-->
+<!--                <span class="menuTitle">Dashboard</span>-->
+<!--              </ion-card>-->
+<!--            </ion-col>-->
+
+<!--            <ion-col size="6" class="ion-no-padding ion-no-margin ion-text-center">-->
+<!--              <ion-card (click)="goToLearning()" button="" class="menuCard ion-no-margin ion-no-padding">-->
+<!--                <img class="menuImg" src="assets/img/learning.png" alt="">-->
+<!--                <span class="menuTitle">Learning</span>-->
+<!--              </ion-card>-->
+<!--            </ion-col>-->
+<!--          </ion-row>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+
 </ion-content>

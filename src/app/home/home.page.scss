@@ -1,27 +1,53 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+//ion-content {
+//  --ion-background-color: #b6b5b5;
+//}
+//ion-card {
+//  --ion-background-color: #ffff;
+//}
+//
+//.menuImg {
+//  height: 100px;
+//}
+//ion-col {
+//  padding: 5px;
+//}
+//.menuTitle {
+//  font-size: 12px;
+//}
+//
+//.home-container .row-center .mainMenu {
+//  position:absolute;
+//  left: 0;
+//  right: 0;
+//  margin:0 auto;
+//  top:50%;
+//  transform:translateY(-50%);
+//}
+.menuCard {
+  height: 80px;
+}
+.smallMenuIcon {
+  height: 40px;
+}
+ion-content {
+  --ion-background-color: #ffff;
+}
+ion-card, ion-item {
+  --ion-background-color: #ffff;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-item {
+  //margin-bottom: 10px;
+  border-radius: 15px;
+  margin: 10px;
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.menuImage {
+  height: 100px;
 }
-
-#container a {
-  text-decoration: none;
+.menuTitle {
+  font-size: 15px;
+  font-weight: bold;
 }
+//.itemCard {
+//  height: 200px;
+//}

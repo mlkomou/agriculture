@@ -1,0 +1,25 @@
+.menuCard {
+  height: 80px;
+}
+.smallMenuIcon {
+  height: 40px;
+}
+ion-content {
+  --ion-background-color: #ffff;
+}
+ion-card, ion-item {
+  --ion-background-color: #ffff;
+}
+
+ion-item {
+  //margin-bottom: 10px;
+  border-radius: 15px;
+  margin: 10px;
+}
+.menuImage {
+  height: 100px;
+}
+.menuTitle {
+  font-size: 15px;
+  font-weight: bold;
+}

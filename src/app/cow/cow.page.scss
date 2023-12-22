@@ -1,0 +1,26 @@
+//ion-content {
+//  --ion-background-color: #b6b5b5;
+//}
+ion-card {
+  --ion-background-color: #ffff;
+}
+.main {
+  height: 150px;
+  background-color: #116232;
+}
+.superMain {
+  background-color: #116232;
+  height: 200px;
+}
+
+.oval {
+  height: 150px;
+  background-color: #116232;
+  border-radius: 25%;
+}
+.itmImage {
+  height: 150px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}

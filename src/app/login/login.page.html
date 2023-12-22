@@ -1,0 +1,26 @@
+
+
+<ion-content [fullscreen]="true">
+  <div>
+    <div class="ion-text-center">
+      <img style="width: 200px;" src="assets/img/cow.png" alt="">
+      <ion-title style="color: grey; font-size: 50px;">Login</ion-title>
+    </div>
+    <section class = "home-container">
+      <div class="row row-center" >
+        <ion-card class="loginCard">
+          <ion-card>
+            <ion-item>
+              <ion-icon name="call" slot="start"></ion-icon>
+              <ion-label position="floating">Téléphone</ion-label>
+              <ion-input [(ngModel)]="phone" type="tel"></ion-input>
+            </ion-item>
+          </ion-card>
+
+          <ion-button (click)="login()" style="margin-top: 30px;" expand="block" shape="round">Login</ion-button>
+        </ion-card>
+      </div>
+    </section>
+
+  </div>
+</ion-content>

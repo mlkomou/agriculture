@@ -8,8 +8,32 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'hello',
     pathMatch: 'full'
+  },
+  {
+    path: 'cow',
+    loadChildren: () => import('./cow/cow.module').then( m => m.CowPageModule)
+  },
+  {
+    path: 'farm',
+    loadChildren: () => import('./farm/farm.module').then( m => m.FarmPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'learning',
+    loadChildren: () => import('./learning/learning.module').then( m => m.LearningPageModule)
+  },
+  {
+    path: 'hello',
+    loadChildren: () => import('./hello/hello.module').then( m => m.HelloPageModule)
   },
 ];
 
