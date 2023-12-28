@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'add-farm',
     loadChildren: () => import('./add-farm/add-farm.module').then( m => m.AddFarmPageModule)
   },
+  {
+    path: 'detail-farm',
+    loadChildren: () => import('./detail-farm/detail-farm.module').then( m => m.DetailFarmPageModule)
+  },
 
 ];
 

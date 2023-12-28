@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-row>
       <ion-col size="2">
@@ -6,44 +6,83 @@
           <ion-icon name="chevron-back" size="25"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="10">
-        <ion-title style="margin-top: 20px;">Add Seed</ion-title>
-      </ion-col>
     </ion-row>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add Seed</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-card>
-    <div style="text-align: center;">
-      <img style="border-radius: 15px;" width="150" src="assets/img/corn.png">
-    </div>
-  </ion-card>
+  <div>
+    <ion-row style="padding: 15px;">
+      <ion-col size="8">
+        <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
+          <span style="font-size: 12px; color: green;">Cop</span>
+        </div>
 
-  <div style="padding: 20px;">
+        <h3>ID ITEM TO SAVE</h3>
+      </ion-col>
+
+      <ion-col size="4">
+        <img style="border-radius: 15px;" src="assets/img/corn.png">
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div style="padding: 15px;">
     <div [formGroup]="seedFrom">
-      <ion-input formControlName="id" label="ID" label-placement="floating" fill="outline" placeholder="ID"></ion-input>
-      <ion-input formControlName="area" label="Area" label-placement="floating" fill="outline" placeholder="Area"></ion-input>
-      <ion-input formControlName="crop" label="crop" label-placement="floating" fill="outline" placeholder="crop"></ion-input>
-      <ion-input type="number" formControlName="seedCost" label="seedCost" label-placement="floating" fill="outline" placeholder="seedCost"></ion-input>
-      <ion-input type="number" formControlName="fertilizerCost1" label="fertilizerCost1" label-placement="floating" fill="outline" placeholder="fertilizerCost1"></ion-input>
-      <ion-input type="number" formControlName="fertilizerCost2" label="fertilizerCost2" label-placement="floating" fill="outline" placeholder="fertilizerCost2"></ion-input>
-      <ion-input type="number" formControlName="herbicideCost2" label="herbicideCost2" label-placement="floating" fill="outline" placeholder="herbicideCost2"></ion-input>
-      <ion-input type="number" formControlName="laborCost2" label="laborCost2" label-placement="floating" fill="outline" placeholder="laborCost2"></ion-input>
-      <ion-input type="number" formControlName="yield" label="yield" label-placement="floating" fill="outline" placeholder="yield"></ion-input>
-      <ion-input type="number" formControlName="salePrice" label="salePrice" label-placement="floating" fill="outline" placeholder="salePrice"></ion-input>
-<!--      <ion-input type="number" formControlName="expense" label="expense" label-placement="floating" fill="outline" placeholder="expense"></ion-input>-->
-      <ion-input type="number" readonly="" *ngIf="updating == false" label="expense" label-placement="floating" fill="outline" placeholder="expense"></ion-input>
-      <ion-input type="number" [ngModelOptions]="{standalone: true}" readonly="" *ngIf="updating == true" [(ngModel)]="expenseValue" label="expense" label-placement="floating" fill="outline" placeholder="expense"></ion-input>
-      <ion-input type="number" formControlName="grosseIncome" label="grosseIncome" label-placement="floating" fill="outline" placeholder="grosseIncome"></ion-input>
-      <ion-input type="number" formControlName="profit" label="profit" label-placement="floating" fill="outline" placeholder="profit"></ion-input>
+      <ion-item>
+        <ion-label position="floating">ID</ion-label>
+        <ion-input type="number" formControlName="id"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Area</ion-label>
+        <ion-input type="number" formControlName="area"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Crop</ion-label>
+        <ion-input type="text" formControlName="crop"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Seed Cost</ion-label>
+        <ion-input type="number" formControlName="seedCost"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fertilizer Cost 1</ion-label>
+        <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fertilizer Cost 2</ion-label>
+        <ion-input type="number" formControlName="fertilizerCost2"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cerbicide Cost</ion-label>
+        <ion-input type="number" formControlName="herbicideCost2"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Labor Cost</ion-label>
+        <ion-input type="number" formControlName="laborCost2"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Yield</ion-label>
+        <ion-input type="number" formControlName="yield"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sale Price</ion-label>
+        <ion-input type="number" formControlName="salePrice"></ion-input>
+      </ion-item>
+
     </div>
 
     <div>

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
-import {Farm} from "../model/farm";
-import {ApiService} from "../api.service";
 import {Preferences} from "@capacitor/preferences";
-import {AddFarmPage} from "../farm/add-farm/add-farm.page";
 import {Cow} from "../model/cow";
 import {AddCowPage} from "./add-cow/add-cow.page";
 import {DetailCowPage} from "./detail-cow/detail-cow.page";

@@ -4,6 +4,9 @@ import {ApiService} from "../api.service";
 import {Farm} from "../model/farm";
 import {AddFarmPage} from "./add-farm/add-farm.page";
 import {Preferences} from "@capacitor/preferences";
+import {Cow} from "../model/cow";
+import {DetailCowPage} from "../cow/detail-cow/detail-cow.page";
+import {DetailFarmPage} from "./detail-farm/detail-farm.page";
 
 @Component({
   selector: 'app-farm',
@@ -43,5 +46,20 @@ farms: Farm[] = [];
        this.getfarmsprod();
       }
     });
+  }
+
+  async openPage(page: any, id: any, data?: any) {
+    const modal = await this.modalCtrl.create({
+      component: page,
+      id: id,
+      componentProps: {
+        farm: data
+      }
+    });
+    await modal.present();
+  }
+
+  goToDetailFarm(farm: Farm) {
+    this.openPage(DetailFarmPage, 'detail-farm', farm);
   }
 }
