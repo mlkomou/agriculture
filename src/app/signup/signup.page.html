@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="superMain bgImage ion-text-center">
-  <img style="height: 150px; border-radius: 50%; margin-top: 20px;" src="assets/img/farmer.jpeg">
+    <img style="height: 150px; border-radius: 50%; margin-top: 20px;" src="assets/img/farmer.jpeg">
   </div>
 
   <div style="text-align: center; margin-top: 30px; color: white;">
@@ -10,6 +10,14 @@
   </div>
 
   <div class="formLogin">
+    <ion-card class="inputCard">
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-label position="floating">Prénom et nom</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </ion-card>
+
     <ion-card class="inputCard first">
       <ion-item>
         <ion-icon name="call" color="primary" slot="start"></ion-icon>
@@ -25,9 +33,17 @@
         <ion-input></ion-input>
       </ion-item>
     </ion-card>
+
+    <ion-card class="inputCard">
+      <ion-item>
+        <ion-icon name="lock-closed" color="primary" slot="start"></ion-icon>
+        <ion-label position="floating">Conf. Mot de passe</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </ion-card>
   </div>
 
   <div style="padding: 10px;">
-    <ion-button (click)="sigin()" mode="ios" color="success" expand="block" shape="round">Se connecter</ion-button>
+    <ion-button (click)="siginup()" mode="ios" color="success" expand="block" shape="round">S'inscrire</ion-button>
   </div>
 </ion-content>

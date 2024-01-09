@@ -18,4 +18,8 @@ phone: number;
       this.router.navigate(['home']);
     }
   }
+
+  sigin() {
+
+  }
 }
