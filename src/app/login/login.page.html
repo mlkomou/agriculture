@@ -9,25 +9,35 @@
     <div style="font-weight: bold; font-size: 40px;">Gamoo</div>
   </div>
 
-  <div class="formLogin">
+  <div class="formLogin" [formGroup]="userForm">
     <ion-card class="inputCard first">
       <ion-item>
         <ion-icon name="call" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Téléphone</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="email"></ion-input>
       </ion-item>
     </ion-card>
 
-    <ion-card class="inputCard">
+    <ion-card *ngIf="userPresent == true" class="inputCard">
       <ion-item>
         <ion-icon name="lock-closed" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="password"></ion-input>
       </ion-item>
     </ion-card>
   </div>
 
-  <div style="padding: 10px;">
-    <ion-button (click)="sigin()" mode="ios" color="success" expand="block" shape="round">Se connecter</ion-button>
+  <div style="padding: 10px;" *ngIf="userPresent == false">
+    <ion-button [disabled]="checking == true || userForm.invalid" (click)="checkUserPresence()" mode="ios" color="success" expand="block" shape="round">Se connecter
+
+    <ion-spinner *ngIf="checking == true" name="crescent" style="margin-left: 15px;"></ion-spinner>
+    </ion-button>
+  </div>
+
+  <div style="padding: 10px;" *ngIf="userPresent == true">
+    <ion-button [disabled]="signing == true || userForm.invalid" (click)="sigin()" mode="ios" color="success" expand="block" shape="round">Se connecter
+
+      <ion-spinner *ngIf="signing == true" name="crescent" style="margin-left: 15px;"></ion-spinner>
+    </ion-button>
   </div>
 </ion-content>

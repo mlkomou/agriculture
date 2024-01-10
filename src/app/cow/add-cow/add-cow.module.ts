@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddCowPageRoutingModule } from './add-cow-routing.module';
 
 import { AddCowPage } from './add-cow.page';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AddCowPage } from './add-cow.page';
     FormsModule,
     IonicModule,
     AddCowPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ImageCropperModule
   ],
   declarations: [AddCowPage]
 })

@@ -20,6 +20,7 @@ import Drilldown from 'highcharts/modules/drilldown';
 Drilldown(Highcharts);
 import Exporting from 'highcharts/modules/exporting';
 import {DetailCowPage} from "../cow/detail-cow/detail-cow.page";
+import {Farmer} from "../model/farmer";
 
 Exporting(Highcharts);
 
@@ -32,6 +33,7 @@ export class HomePage {
 currentTab: any = 'seed';
   seeds: Farm[] = [];
   cows: Cow[] = [];
+  currentUser: Farmer = JSON.parse(localStorage.getItem('user'));
 
   //// statistics
   genderChart: Chart;
@@ -42,6 +44,10 @@ currentTab: any = 'seed';
     this.getCows();
     this.showGendreChart();
     this.showMilProdChart();
+
+    if (this.currentUser) {
+      console.log('currentUser', this.currentUser);
+    }
   }
 
   showGendreChart() {

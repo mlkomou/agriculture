@@ -9,12 +9,12 @@
     <div style="font-weight: bold; font-size: 40px;">Gamoo</div>
   </div>
 
-  <div class="formLogin">
+  <div class="formLogin" [formGroup]="farmerForm">
     <ion-card class="inputCard">
       <ion-item>
         <ion-icon name="person" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Prénom et nom</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="fullName"></ion-input>
       </ion-item>
     </ion-card>
 
@@ -22,7 +22,7 @@
       <ion-item>
         <ion-icon name="call" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Téléphone</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="phone"></ion-input>
       </ion-item>
     </ion-card>
 
@@ -30,7 +30,7 @@
       <ion-item>
         <ion-icon name="lock-closed" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="password"></ion-input>
       </ion-item>
     </ion-card>
 
@@ -38,12 +38,16 @@
       <ion-item>
         <ion-icon name="lock-closed" color="primary" slot="start"></ion-icon>
         <ion-label position="floating">Conf. Mot de passe</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="confirmPassword"></ion-input>
       </ion-item>
+      <div *ngIf="farmerForm['controls']['confirmPassword']['errors'] && farmerForm['controls']['confirmPassword']['errors']['mismatchedPasswords']">
+        <div style="color: red;">Les mots de passe ne correspondent pas!</div>
+      </div>
     </ion-card>
   </div>
 
   <div style="padding: 10px;">
-    <ion-button (click)="siginup()" mode="ios" color="success" expand="block" shape="round">S'inscrire</ion-button>
+    <ion-button [disabled]="creating == true || farmerForm.invalid" (click)="siginup()" mode="ios" color="success" expand="block" shape="round">S'inscrire
+      <ion-spinner *ngIf="creating == true" name="crescent" style="margin-left: 10px;"></ion-spinner></ion-button>
   </div>
 </ion-content>

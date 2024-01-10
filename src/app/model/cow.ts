@@ -8,7 +8,7 @@ export class Cow {
   feed: number;
   vetCost: number;
   milkPrice: number;
-  expense: number;
-  income: number;
-  profit: number;
+  expense?: number;
+  income?: number;
+  profit?: number;
 }

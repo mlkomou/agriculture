@@ -1,13 +1,13 @@
 export class Farmer {
-   id: number;
+   id?: number;
    fullName: string;
-   email: string;
+   email?: string;
    password: string;
    phone: string;
-   admin: boolean;
-   activate: boolean;
-   avatar: string;
-   role: Role;
+   admin?: boolean;
+   activate?: boolean;
+   avatar?: string;
+   role?: Role;
 }
 
 export enum Role {

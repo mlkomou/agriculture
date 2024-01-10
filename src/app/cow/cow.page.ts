@@ -4,6 +4,7 @@ import {Preferences} from "@capacitor/preferences";
 import {Cow} from "../model/cow";
 import {AddCowPage} from "./add-cow/add-cow.page";
 import {DetailCowPage} from "./detail-cow/detail-cow.page";
+import {Farmer} from "../model/farmer";
 
 @Component({
   selector: 'app-cow',
@@ -12,6 +13,8 @@ import {DetailCowPage} from "./detail-cow/detail-cow.page";
 })
 export class CowPage implements OnInit {
   cows: Cow[] = [];
+  toDay: Date = new  Date();
+  currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
