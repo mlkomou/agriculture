@@ -45,11 +45,34 @@ export class ApiService {
     return this.httpClient.get<Iresponse>(`${this.apiUrl}/users/check/${phone}`);
   }
 
-  saveCow(cow: Cow, photo: any): Observable<Iresponse> {
+  saveCow(cow: Cow, photo: any, userId: number): Observable<Iresponse> {
     let form: FormData = new FormData();
     form.append("cow", JSON.stringify(cow));
-    form.append("photo", photo, new Date().getTime()+ ".png");
-    return this.httpClient.post<Iresponse>(`${this.apiUrl}/cows/save`, form);
+    if (photo) {
+      form.append("photo", photo, new Date().getTime()+ ".png");
+    }
+    return this.httpClient.post<Iresponse>(`${this.apiUrl}/cows/save/${userId}`, form);
+  }
+
+  getCow(page: number, size: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/cows/page/${page}/${size}`);
+  }
+
+  saveSeed(cow: Farm, photo: any, userId: number): Observable<Iresponse> {
+    let form: FormData = new FormData();
+    form.append("seed", JSON.stringify(cow));
+    if (photo) {
+      form.append("photo", photo, new Date().getTime()+ ".png");
+    }
+    return this.httpClient.post<Iresponse>(`${this.apiUrl}/seeds/save/${userId}`, form);
+  }
+
+  getSeed(page: number, size: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/page/${page}/${size}`);
+  }
+
+  public makeDownloadImage(filname: string): string {
+    return `${environment.apiUrl}/downloads/${filname}`;
   }
 
 }

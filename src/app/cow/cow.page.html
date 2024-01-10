@@ -59,7 +59,7 @@
   <div>
   <div align="center">
     <ion-card (click)="goToDetailCow(cow)" mode="ios" button="" *ngFor="let cow of cows" style="width: 90%; padding: 10px;">
-      <div class="itmImage" style="background-image: url('assets/img/cow-.jpg')">
+      <div class="itmImage" style="background-image: url('{{apiService.makeDownloadImage(cow?.imagePath)}}')">
 
       </div>
       <ion-row>

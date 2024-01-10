@@ -20,13 +20,15 @@
           <span style="font-size: 12px; color: green;">{{cowFrom?.controls['gender'].value}}</span>
         </div>
 
-        <h3>Nouvel animal</h3>
+        <h3 *ngIf="!data">Nouvel animal</h3>
+        <h3 *ngIf="data">Modification de l'animal {{data?.id}} </h3>
       </ion-col>
 
       <ion-col size="4">
         <ion-card button="" (click)="pickImage()">
           <img *ngIf="croppedImage" style="border-radius: 15px;" [src]="croppedImage">
-          <img *ngIf="!croppedImage" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
+          <img *ngIf="data && !croppedImage" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(data.imagePath)">
+          <img *ngIf="!croppedImage && !data" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
         </ion-card>
         <input #imagePicker hidden="" type="file" (change)="fileChangeEvent($event)" />
       </ion-col>
@@ -104,9 +106,10 @@
     </div>
 
     <div>
-      <ion-button (click)="saveOrUpdata()" expand="block" shape="round">
+      <ion-button [disabled]="saving == true || cowFrom.invalid" (click)="saveOrUpdata()" expand="block" shape="round">
         Save Cow
         <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
+        <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
       </ion-button>
     </div>
   </div>

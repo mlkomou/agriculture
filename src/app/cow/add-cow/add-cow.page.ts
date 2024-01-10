@@ -7,6 +7,7 @@ import {Preferences} from "@capacitor/preferences";
 import {Cow} from "../../model/cow";
 import {ImageCroppedEvent} from "ngx-image-cropper";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Farmer} from "../../model/farmer";
 
 @Component({
   selector: 'app-add-cow',
@@ -21,11 +22,13 @@ export class AddCowPage implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   imageFile: any;
+  saving: boolean = false;
+  currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
 
   @ViewChild('imagePicker') imagePicker: ElementRef;
   constructor(private modalCtrl: ModalController,
               private fb: FormBuilder,
-              private apiService: ApiService,
+              public apiService: ApiService,
               private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -55,7 +58,8 @@ export class AddCowPage implements OnInit {
       milkProduction: [data.milkProduction, Validators.required],
       feed: [data.feed, Validators.required],
       vetCost: [data.vetCost, Validators.required],
-      milkPrice: [data.milkPrice, Validators.required]
+      milkPrice: [data.milkPrice, Validators.required],
+      imagePath: [data.imagePath],
     });
   }
 
@@ -82,80 +86,39 @@ export class AddCowPage implements OnInit {
       milkProduction: cow.milkProduction,
       feed: cow.feed,
       vetCost: cow.vetCost,
-      milkPrice: cow.milkPrice
+      milkPrice: cow.milkPrice,
+      imagePath: cow.imagePath
     }
   }
   saveSeed() {
    if (this.cowFrom.valid) {
-     this.apiService.saveCow(this.formatForm(this.cowFrom.value), this.imageFile).subscribe((res) => {
-       console.log(res);
-     })
-   //   Preferences.get({key: 'cow'}).then((old) => {
-   //     if (old.value) {
-   //       let oldSeeds: Farm[] = JSON.parse(old.value);
-   //       oldSeeds.push(this.cowFrom.value);
-   //       Preferences.set({key: "cow", value: JSON.stringify(oldSeeds)}).then((res) => {
-   //         this.apiService.showToast('Seed saved successfully', 3000, 'success', 'top');
-   //         this.modalCtrl.dismiss(1);
-   //       }).catch((Err) => {
-   //         this.apiService.showToast('Save error, try again', 3000, 'danger', 'top');
-   //       });
-   //     } else {
-   //       this.cows.push(this.cowFrom.value);
-   //       if (this.cows.length > 0) {
-   //         Preferences.set({key: "cow", value: JSON.stringify(this.cows)}).then((res) => {
-   //           this.apiService.showToast('Seed saved successfully', 3000, 'success', 'top');
-   //           this.modalCtrl.dismiss(1);
-   //         }).catch((Err) => {
-   //           this.apiService.showToast('Save error, try again', 3000, 'danger', 'top');
-   //         });
-   //       }
-   //     }
-   //   })
-   //   if (this.cows.length > 0) {
-   //
-   //   }
-   // } else {
-   //
+     this.saving = true;
+     this.apiService.saveCow(this.formatForm(this.cowFrom.value), this.imageFile, this.currentUser.id).subscribe((res) => {
+       if (res.ok) {
+         this.saving = false;
+         this.apiService.showToast(res.message, 3000, 'success', 'top');
+         this.modalCtrl.dismiss(res.data);
+       } else {
+         this.saving = false;
+         this.apiService.showToast(res.message, 3000, 'danger', 'top');
+       }
+     }, error => {
+       this.saving = false;
+       this.apiService.showToast("Erreur d'enregistrement de l'animal, veuillez réessayer plus tard", 3000, 'danger', 'top');
+     });
    }
   }
-  updataSeed() {
-    Preferences.get({key: 'cow'}).then((old) => {
-      if (old.value) {
-        let oldSeeds: Cow[] = JSON.parse(old.value);
-        let indexSeedToupdate: number = oldSeeds.findIndex(toUpdate => {
-          return toUpdate.id == this.data.id
-        });
-        if (indexSeedToupdate != -1) {
-          oldSeeds[indexSeedToupdate].id = this.cowFrom.value.id;
-          oldSeeds[indexSeedToupdate].profit = this.cowFrom.value.profit;
-          oldSeeds[indexSeedToupdate].income = this.cowFrom.value.income;
-          oldSeeds[indexSeedToupdate].expense = this.cowFrom.value.expense;
-          oldSeeds[indexSeedToupdate].inseminationCost = this.cowFrom.value.inseminationCost;
-          oldSeeds[indexSeedToupdate].feed = this.cowFrom.value.feed;
-          oldSeeds[indexSeedToupdate].milkPrice = this.cowFrom.value.milkPrice;
-          oldSeeds[indexSeedToupdate].milkProduction = this.cowFrom.value.milkProduction;
-          oldSeeds[indexSeedToupdate].vetCost = this.cowFrom.value.vetCost;
-          oldSeeds[indexSeedToupdate].calvingDate = this.cowFrom.value.calvingDate;
-          oldSeeds[indexSeedToupdate].inseminationDate = this.cowFrom.value.inseminationDate;
-          oldSeeds[indexSeedToupdate].gender = this.cowFrom.value.gender;
 
-        }
-        Preferences.set({key: "cow", value: JSON.stringify(oldSeeds)}).then((res) => {
-          this.apiService.showToast('Seed saved successfully', 3000, 'success', 'top');
-          this.modalCtrl.dismiss(1);
-        }).catch((Err) => {
-          this.apiService.showToast('Save error, try again', 3000, 'danger', 'top');
-        });
-      }
-    });
-  }
 
   saveOrUpdata() {
     if (this.data) {
-      this.updataSeed();
-    } else {
       this.saveSeed();
+    } else {
+      if (this.imageFile) {
+        this.saveSeed();
+      } else {
+        this.apiService.showToast("Veuillez importer une photo", 3000, 'secondary', 'top');
+      }
     }
   }
 

@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Cow} from "../../model/cow";
 import {ModalController} from "@ionic/angular";
 import {Farm} from "../../model/farm";
+import {ApiService} from "../../api.service";
+import {AddFarmPage} from "../add-farm/add-farm.page";
 
 @Component({
   selector: 'app-detail-farm',
@@ -11,12 +12,28 @@ import {Farm} from "../../model/farm";
 export class DetailFarmPage implements OnInit {
 
   @Input() farm: Farm;
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController,
+              public apiService: ApiService) { }
 
   ngOnInit() {
     if (this.farm) {
       console.log('detail', this.farm);
     }
+  }
+
+  async goToAdd(data: Farm) {
+    const modal = await this.modalCtrl.create({
+      component: AddFarmPage,
+      componentProps: {
+        data: data
+      }
+    });
+    await modal.present();
+    modal.onDidDismiss().then((result) => {
+     if (result.data) {
+       this.farm = result.data
+     }
+    });
   }
 
   getProfitValue(farm: Farm): number {

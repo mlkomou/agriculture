@@ -16,80 +16,101 @@
   <div>
     <ion-row style="padding: 15px;">
       <ion-col size="8">
-        <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-          <span style="font-size: 12px; color: green;">Cop</span>
+        <div *ngIf="seedFrom?.controls['crop'].value" style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
+          <span style="font-size: 12px; color: green;">{{seedFrom?.controls['crop'].value}}</span>
         </div>
 
-        <h3>ID ITEM TO SAVE</h3>
+        <h3 *ngIf="!data">Nouvelle graine</h3>
+        <h3 *ngIf="data">Modification de la graine {{data?.id}} </h3>
       </ion-col>
 
       <ion-col size="4">
-        <img style="border-radius: 15px;" src="assets/img/corn.png">
+        <ion-card button="" (click)="pickImage()">
+          <img *ngIf="croppedImage" style="border-radius: 15px;" [src]="croppedImage">
+          <img *ngIf="data && !croppedImage" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(data.imagePath)">
+          <img *ngIf="!croppedImage && !data" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
+        </ion-card>
+        <input #imagePicker hidden="" type="file" (change)="fileChangeEvent($event)" />
       </ion-col>
     </ion-row>
+
+    <div *ngIf="imageChangedEvent">
+      <ion-row>
+        <ion-col size="10"></ion-col>
+        <ion-col size="2" class="ion-text-right">
+          <ion-button (click)="ckeckImage()" style="--border-radius: 50%; height: 40px; width: 40px;" class="ion-no-padding">
+            <ion-icon size="40" name="checkbox"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 3"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+    </div>
   </div>
 
   <div style="padding: 15px;">
-    <div [formGroup]="seedFrom">
-      <ion-item>
-        <ion-label position="floating">ID</ion-label>
-        <ion-input type="number" formControlName="id"></ion-input>
-      </ion-item>
+    <div style="padding: 15px;">
+      <div [formGroup]="seedFrom">
+        <ion-item>
+          <ion-label position="floating">Area</ion-label>
+          <ion-input type="number" formControlName="area"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Crop</ion-label>
+          <ion-input type="text" formControlName="crop"></ion-input>
+        </ion-item>
 
 
-      <ion-item>
-        <ion-label position="floating">Area</ion-label>
-        <ion-input type="number" formControlName="area"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Seed Cost</ion-label>
+          <ion-input type="number" formControlName="seedCost"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Crop</ion-label>
-        <ion-input type="text" formControlName="crop"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Fertilizer Cost 1</ion-label>
+          <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
+        </ion-item>
 
+        <ion-item>
+          <ion-label position="floating">Fertilizer Cost 2</ion-label>
+          <ion-input type="number" formControlName="fertilizerCost2"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Seed Cost</ion-label>
-        <ion-input type="number" formControlName="seedCost"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Cerbicide Cost</ion-label>
+          <ion-input type="number" formControlName="herbicideCost2"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Fertilizer Cost 1</ion-label>
-        <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Labor Cost</ion-label>
+          <ion-input type="number" formControlName="laborCost2"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Fertilizer Cost 2</ion-label>
-        <ion-input type="number" formControlName="fertilizerCost2"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Yield</ion-label>
+          <ion-input type="number" formControlName="yield"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Cerbicide Cost</ion-label>
-        <ion-input type="number" formControlName="herbicideCost2"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Sale Price</ion-label>
+          <ion-input type="number" formControlName="salePrice"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Labor Cost</ion-label>
-        <ion-input type="number" formControlName="laborCost2"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Yield</ion-label>
-        <ion-input type="number" formControlName="yield"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Sale Price</ion-label>
-        <ion-input type="number" formControlName="salePrice"></ion-input>
-      </ion-item>
-
-    </div>
+      </div>
 
     <div>
-      <ion-button (click)="saveOrUpdata()" expand="block" shape="round">
-        Save Seed
+      <ion-button [disabled]="saving == true || seedFrom.invalid" (click)="saveOrUpdata()" expand="block" shape="round">
+        Enregistrer la graine
         <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
+        <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
       </ion-button>
     </div>
+  </div>
   </div>
 </ion-content>

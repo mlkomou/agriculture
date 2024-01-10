@@ -11,4 +11,5 @@ export class Cow {
   expense?: number;
   income?: number;
   profit?: number;
+  imagePath?: string
 }

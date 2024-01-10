@@ -9,7 +9,8 @@ export class Farm {
   laborCost2: number;
   yield: number;
   salePrice: number;
-  expense: number;
-  grosseIncome: number;
-  profit: number;
+  expense?: number;
+  grosseIncome?: number;
+  profit?: number;
+  imagePath?: string;
 }

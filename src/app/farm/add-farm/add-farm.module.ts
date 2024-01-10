@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddFarmPageRoutingModule } from './add-farm-routing.module';
 
 import { AddFarmPage } from './add-farm.page';
+import {ImageCropperModule} from "ngx-image-cropper";
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { AddFarmPage } from './add-farm.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddFarmPageRoutingModule
+    AddFarmPageRoutingModule,
+    ReactiveFormsModule,
+    ImageCropperModule
   ],
   declarations: [AddFarmPage]
 })

@@ -16,13 +16,13 @@
 
         <h3>ID: {{farm?.id}}
         </h3>
-        <ion-button mode="ios">
+        <ion-button (click)="goToAdd(farm)" mode="ios">
           <ion-icon size="40" name="create"></ion-icon>
         </ion-button>
       </ion-col>
 
       <ion-col size="4">
-        <img style="border-radius: 15px;" src="assets/img/corn.png">
+        <img style="border-radius: 15px;" [src]="apiService.makeDownloadImage(farm.imagePath)">
       </ion-col>
     </ion-row>
   </div>

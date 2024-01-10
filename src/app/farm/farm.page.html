@@ -22,10 +22,10 @@
         <ion-row style="padding: 15px;">
           <ion-col size="10">
             <div style="font-size: 25px;">
-              <span style="color: white;">Hello, </span> <span style="color: #b7ee74">Farmer </span>
+              <span style="color: white;">Bonjour, </span> <span style="color: #b7ee74">{{currentUser?.fullName}} </span>
             </div>
             <div>
-              <span style="color: #c7c7c7; font-size: 12px;">Sunday, 01 juilly 2030</span>
+              <span style="color: #c7c7c7; font-size: 12px;">{{toDay | date}}</span>
             </div>
           </ion-col>
           <ion-col size="2">
@@ -44,7 +44,7 @@
           </ion-col>
           <ion-col class="ion-text-right" size="4">
             <div style="height: 25px; width: 80px;  background-color: #d6fad6; text-align: center; border-radius: 15px;">
-              <span style="font-size: 12px; color: green;">{{farms?.length}} Seeds</span>
+              <span style="font-size: 12px; color: green;">{{seeds?.length}} Graines</span>
             </div>
           </ion-col>
         </ion-row>
@@ -58,17 +58,17 @@
 
   <div>
     <div align="center">
-      <ion-card (click)="goToDetailFarm(farm)" mode="ios" button="" *ngFor="let farm of farms" style="width: 90%; padding: 10px;">
-        <div class="itmImage" style="background-image: url('assets/img/corn.png')">
+      <ion-card (click)="goToDetailFarm(seed)" mode="ios" button="" *ngFor="let seed of seeds" style="width: 90%; padding: 10px;">
+        <div class="itmImage" style="background-image: url('{{apiService.makeDownloadImage(seed?.imagePath)}}')">
 
         </div>
         <ion-row>
           <ion-col class="ion-text-left" size="8">
-            <span> ID: {{farm?.id}} </span> <br>
+            <span> ID: {{seed?.id}} </span> <br>
           </ion-col>
           <ion-col size="4">
             <div style="height: 25px; width: 80px; padding-top: 3px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-              <span style="font-size: 12px; color: green;">{{farm?.crop}}</span>
+              <span style="font-size: 12px; color: green;">{{seed?.crop}}</span>
             </div>
           </ion-col>
         </ion-row>

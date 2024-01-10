@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {Cow} from "../../model/cow";
+import {ApiService} from "../../api.service";
+import {AddCowPage} from "../add-cow/add-cow.page";
 
 @Component({
   selector: 'app-detail-cow',
@@ -9,7 +11,7 @@ import {Cow} from "../../model/cow";
 })
 export class DetailCowPage implements OnInit {
 @Input() cow: Cow;
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, public apiService: ApiService) { }
 
   ngOnInit() {
     if (this.cow) {
@@ -17,6 +19,20 @@ export class DetailCowPage implements OnInit {
     }
   }
 
+  async goToAdd(data: Cow) {
+    const modal = await this.modalCtrl.create({
+      component: AddCowPage,
+      componentProps: {
+        data: data
+      }
+    });
+    await modal.present();
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.cow = result.data
+      }
+    });
+  }
   getProfitValue(cow: Cow): number {
     // profit = icome - expense
     // let expense = cow?.vetCost + cow?.feed + cow?.inseminationCost;

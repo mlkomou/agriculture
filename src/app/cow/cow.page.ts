@@ -5,6 +5,7 @@ import {Cow} from "../model/cow";
 import {AddCowPage} from "./add-cow/add-cow.page";
 import {DetailCowPage} from "./detail-cow/detail-cow.page";
 import {Farmer} from "../model/farmer";
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-cow',
@@ -15,10 +16,14 @@ export class CowPage implements OnInit {
   cows: Cow[] = [];
   toDay: Date = new  Date();
   currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
-  constructor(private modalCtrl: ModalController) { }
+  page: number = 0;
+  size: number = 20;
+  constructor(private modalCtrl: ModalController,
+              public apiService: ApiService) { }
 
   ngOnInit() {
-    this.getfarmsprod();
+    // this.getfarmsprod();
+    this.getCows(this.page, this.size);
   }
   closeModal() {
     this.modalCtrl.dismiss();
@@ -34,16 +39,17 @@ export class CowPage implements OnInit {
     await modal.present();
   }
 
-  goToDetailCow(cow: Cow) {
-    this.openPage(DetailCowPage, 'detail-cow', cow);
-  }
-
-  getfarmsprod() {
-    Preferences.get({key: 'cow'}).then((result) => {
-      if (result.value) {
-        this.cows = JSON.parse(result.value);
+  getCows(page: number, size: number) {
+    this.apiService.getCow(page, size).subscribe((res) => {
+      console.log(res);
+      if (res.ok) {
+        this.cows = res.data.content;
       }
     });
+  }
+
+  goToDetailCow(cow: Cow) {
+    this.openPage(DetailCowPage, 'detail-cow', cow);
   }
 
   async goToAdd(data: Cow) {
@@ -56,7 +62,7 @@ export class CowPage implements OnInit {
     await modal.present();
     modal.onDidDismiss().then((result) => {
       if (result.data == 1) {
-        this.getfarmsprod();
+        this.getCows(this.page, this.size);
       }
     });
   }
