@@ -22,6 +22,7 @@ export class AddFarmPage implements OnInit {
   imageFile: any;
   saving: boolean = false;
   currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
+  crops: any[] = [];
 
   @ViewChild('imagePicker') imagePicker: ElementRef;
   constructor(private modalCtrl: ModalController,
@@ -35,15 +36,23 @@ export class AddFarmPage implements OnInit {
     } else {
       this.createForm(new Farm());
     }
+    this.getCrops();
   }
 
+  getCrops() {
+    this.apiService.getCrops().subscribe((res) => {
+      console.log(res);
+      if (res.ok) {
+        this.crops = res.data;
+      }
+    });
+  }
   pickImage() {
     this.imagePicker.nativeElement.click();
   }
 
   ckeckImage() {
     this.imageChangedEvent = null;
-    console.log(this.imageFile);
   }
 
   createForm(data: Farm) {

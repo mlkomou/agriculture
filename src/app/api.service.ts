@@ -54,8 +54,8 @@ export class ApiService {
     return this.httpClient.post<Iresponse>(`${this.apiUrl}/cows/save/${userId}`, form);
   }
 
-  getCow(page: number, size: number): Observable<Iresponse> {
-    return this.httpClient.get<Iresponse>(`${this.apiUrl}/cows/page/${page}/${size}`);
+  getCow(page: number, size: number, userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/cows/page/${page}/${size}/${userId}`);
   }
 
   saveSeed(cow: Farm, photo: any, userId: number): Observable<Iresponse> {
@@ -67,8 +67,28 @@ export class ApiService {
     return this.httpClient.post<Iresponse>(`${this.apiUrl}/seeds/save/${userId}`, form);
   }
 
-  getSeed(page: number, size: number): Observable<Iresponse> {
-    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/page/${page}/${size}`);
+  getSeed(page: number, size: number, userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/page/${page}/${size}/${userId}`);
+  }
+
+  getCrops(): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/crop`);
+  }
+
+  cowByGender(userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/cows/cow-by-gender/${userId}`);
+  }
+  getByCrop(userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/state_crop/${userId}`);
+  }
+  getIcomeByCrop(userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/income_crop/${userId}`);
+  }
+  getYieldByCrop(userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/yield/${userId}`);
+  }
+  getExpenses(userId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/expense/${userId}`);
   }
 
   public makeDownloadImage(filname: string): string {

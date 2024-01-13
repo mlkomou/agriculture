@@ -15,18 +15,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-row>
+<div *ngIf="currentUser">
   <ion-card mode="ios">
     <div *ngIf="genderChart" [chart]="genderChart"></div>
   </ion-card>
  <ion-card mode="ios">
    <div *ngIf="icomeChart" [chart]="icomeChart"></div>
  </ion-card>
+
   <ion-card mode="ios">
-    <div *ngIf="milkprodChart" [chart]="milkprodChart"></div>
+   <div *ngIf="seedByCropChart" [chart]="seedByCropChart"></div>
+ </ion-card>
+  <ion-card mode="ios">
+    <div *ngIf="expenseChart" [chart]="expenseChart"></div>
   </ion-card>
   <ion-card mode="ios">
-    <div *ngIf="cropChart" [chart]="cropChart"></div>
+    <div *ngIf="yieldChart" [chart]="yieldChart"></div>
   </ion-card>
-</ion-row>
+</div>
 </ion-content>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController} from "@ionic/angular";
+import {InfiniteScrollCustomEvent, ModalController} from "@ionic/angular";
 import {ApiService} from "../api.service";
 import {Farm} from "../model/farm";
 import {AddFarmPage} from "./add-farm/add-farm.page";
 import {DetailFarmPage} from "./detail-farm/detail-farm.page";
 import {Farmer} from "../model/farmer";
+import {Cow} from "../model/cow";
 
 @Component({
   selector: 'app-farm',
@@ -39,7 +40,7 @@ export class FarmPage implements OnInit {
   }
 
   getFarms(page: number, size: number) {
-    this.apiService.getSeed(page, size).subscribe((res) => {
+    this.apiService.getSeed(page, size, this.currentUser.id).subscribe((res) => {
       console.log(res);
       if (res.ok) {
         this.seeds = res.data.content;
@@ -47,6 +48,30 @@ export class FarmPage implements OnInit {
     });
   }
 
+  handleRefresh(event) {
+    this.getFarms(0, this.size);
+    event.target.complete();
+  }
+
+  onIonInfinite(ev) {
+    this.page++;
+    this.apiService.getSeed(this.page, this.size, this.currentUser.id).subscribe((res) => {
+      console.log(this.page, this.size);
+      if (res.ok) {
+        let cowsDraft: Farm[] = res.data.content;
+        if (cowsDraft.length > 0) {
+          cowsDraft.forEach(value => {
+            this.seeds.push(value);
+          });
+          (ev as InfiniteScrollCustomEvent).target.complete();
+          console.log(ev);
+        } else {
+          this.page--;
+          (ev as InfiniteScrollCustomEvent).target.complete();
+        }
+      }
+    });
+  }
   goToDetailFarm(cow: Farm) {
     this.openPage(DetailFarmPage, 'detail-seed', cow);
   }

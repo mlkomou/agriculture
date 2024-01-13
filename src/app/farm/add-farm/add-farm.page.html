@@ -63,7 +63,9 @@
 
         <ion-item>
           <ion-label position="floating">Crop</ion-label>
-          <ion-input type="text" formControlName="crop"></ion-input>
+          <ion-select label-placement="floating" formControlName="crop" aria-label="Crop" interface="action-sheet">
+            <ion-select-option *ngFor="let cr of crops" [value]="cr.name">{{cr?.name}}</ion-select-option>
+          </ion-select>
         </ion-item>
 
 

@@ -11,10 +11,11 @@ import Drilldown from 'highcharts/modules/drilldown';
 
 Drilldown(Highcharts);
 import Exporting from 'highcharts/modules/exporting';
+import {ApiService} from "../api.service";
+import {Farmer} from "../model/farmer";
 
 Exporting(Highcharts);
 
-import HC_exporting from 'highcharts/modules/exporting';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -23,19 +24,67 @@ import HC_exporting from 'highcharts/modules/exporting';
 export class DashboardPage implements OnInit {
    genderChart: Chart;
    icomeChart: Chart;
-   milkprodChart: Chart;
-   cropChart: Chart;
+   expenseChart: Chart;
+   yieldChart: Chart;
+   seedByCropChart: Chart;
 
-  constructor(private modalCtrl: ModalController) { }
+   currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
+  constructor(private modalCtrl: ModalController, private apiService: ApiService) { }
 
   ngOnInit() {
-    this.showGendreChart();
-    this.showMilProdChart();
-    this.showRendementPerCrop();
-    this.incomeChart();
+
+
+
+
+    this.getCowByGender();
+
+    this.getByCrop();
+    this.getIcomeCrop();
+    this.getExpenses();
+    this.getYieldByCrop();
   }
 
-  showGendreChart() {
+  getCowByGender() {
+    if (this.currentUser) {
+      this.apiService.cowByGender(this.currentUser.id).subscribe((res) => {
+        // console.log(res);
+        if (res.ok) {
+          this.showGendreChart(res.data);
+        }
+      });
+    }
+  }
+
+  getByCrop() {
+    if (this.currentUser) {
+      this.apiService.getByCrop(this.currentUser.id).subscribe((res) => {
+        // console.log("seeds", res.data);
+        if (res.ok) {
+          this.getSeedByCropChart(res.data);
+        }
+      });
+    }
+  }
+
+  getIcomeCrop() {
+    this.apiService.getIcomeByCrop(this.currentUser.id).subscribe((res) => {
+      // console.log('income', res);
+      if (res.ok) {
+        this.seedIcomeByCropChart(res.data);
+      }
+    })
+  }
+
+  getExpenses() {
+    this.apiService.getExpenses(this.currentUser.id).subscribe((res) => {
+      console.log('expense', res);
+      if (res.ok) {
+        this.showExpenseChart(res.data);
+      }
+    });
+  }
+
+  showGendreChart(data: any[]) {
     let opts: any = {
       chart: {
         type: 'pie'
@@ -44,7 +93,7 @@ export class DashboardPage implements OnInit {
         text: 'Gender Cow Number'
       },
       tooltip: {
-        valueSuffix: '%'
+        valueSuffix: ''
       },
       subtitle: {
         text:
@@ -76,20 +125,9 @@ export class DashboardPage implements OnInit {
       },
       series: [
         {
-          name: 'Percentage',
+          name: 'Nombre',
           colorByPoint: true,
-          data: [
-            {
-              name: 'Sir',
-              y: 55.02
-            },
-            {
-              name: 'Dame',
-              sliced: true,
-              selected: true,
-              y: 26.71
-            }
-          ]
+          data: data
         }
       ]
     };
@@ -98,16 +136,16 @@ export class DashboardPage implements OnInit {
     );
   }
 
-  incomeChart() {
+  getSeedByCropChart(data: any[]) {
     let opts: any = {
       chart: {
         type: 'pie'
       },
       title: {
-        text: 'Percentage Icome by Seed'
+        text: 'Percentage of Seed by crop'
       },
       tooltip: {
-        valueSuffix: '%'
+        valueSuffix: ''
       },
       subtitle: {
         text:
@@ -135,42 +173,65 @@ export class DashboardPage implements OnInit {
               value: 10
             }
           }]
-
-
-    //         ['Corn', 3700],
-    //       ['Peanut', 3100],
-    // ['Bean', 2700],
-    //   ['Rice', 2200],
         }
       },
       series: [
         {
           name: 'Percentage',
           colorByPoint: true,
-          data: [
-            {
-              name: 'Corn',
-              y: 55.02
+          data: data
+
+        }
+      ]
+    };
+    this.seedByCropChart = new Chart(
+      opts
+    );
+  }
+  seedIcomeByCropChart(data: any[]) {
+    let opts: any = {
+      chart: {
+        type: 'pie'
+      },
+      title: {
+        text: 'Percentage of Icome by crop'
+      },
+      tooltip: {
+        valueSuffix: ''
+      },
+      subtitle: {
+        text:
+          ''
+      },
+      plotOptions: {
+        series: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: [{
+            enabled: true,
+            distance: 20
+          }, {
+            enabled: true,
+            distance: -40,
+            format: '{point.percentage:.1f}%',
+            style: {
+              fontSize: '1.2em',
+              textOutline: 'none',
+              opacity: 0.7
             },
-            {
-              name: 'Peanut',
-              sliced: true,
-              selected: true,
-              y: 26.71
-            },
-            {
-              name: 'Bean',
-              sliced: true,
-              selected: true,
-              y: 30
-            },
-            {
-              name: 'Rice',
-              sliced: true,
-              selected: true,
-              y: 62
-            },
-          ]
+            filter: {
+              operator: '>',
+              property: 'percentage',
+              value: 10
+            }
+          }]
+        }
+      },
+      series: [
+        {
+          name: 'Percentage',
+          colorByPoint: true,
+          data: data
         }
       ]
     };
@@ -178,7 +239,7 @@ export class DashboardPage implements OnInit {
       opts
     );
   }
-  showMilProdChart() {
+  showExpenseChart(data: any) {
     let opts: any = {
       chart: {
         type: 'spline'
@@ -190,8 +251,8 @@ export class DashboardPage implements OnInit {
         text: ''
       },
       xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: data.categories,
+        // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         accessibility: {
           description: 'Months of the year'
         }
@@ -218,42 +279,36 @@ export class DashboardPage implements OnInit {
         }
       },
       series: [{
-        name: 'Cow',
+        name: 'Seed',
         marker: {
           symbol: 'square'
         },
-        data: [5.2, 5.7, 8.7, 13.9, 18.2, 21.4, 25.0, {
-          y: 26.4,
-          // marker: {
-          //   symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
-          // },
-          accessibility: {
-            description: 'Sunny symbol, this is the warmest point in the chart.'
-          }
-        }, 22.8, 17.5, 12.1, 7.6]
+        data: data.data
+        // data: [5.2, 5.7, 8.7, 13.9, 18.2, 21.4, 25.0, 26.4, 22.8, 17.5, 12.1, 7.6]
 
       }, {
-        name: 'Seed',
+        name: 'Cow',
         marker: {
           symbol: 'diamond'
         },
-        data: [{
-          y: 1.5,
-          // marker: {
-          //   symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
-          // },
-          accessibility: {
-            description: 'Snowy symbol, this is the coldest point in the chart.'
-          }
-        }, 1.6, 3.3, 5.9, 10.5, 13.5, 14.5, 14.4, 11.5, 8.7, 4.7, 2.6]
+        data: data.dataCow
       }]
     };
-    this.milkprodChart = new Chart(
+    this.expenseChart = new Chart(
       opts
     );
   }
 
-  showRendementPerCrop() {
+  getYieldByCrop() {
+    this.apiService.getYieldByCrop(this.currentUser.id).subscribe((res) => {
+      console.log('yield', res);
+      if (res.ok) {
+        this.showRendementPerCrop(res.data);
+      }
+    });
+  }
+
+  showRendementPerCrop(data: any[]) {
     let opts: any = {
       chart: {
         type: 'column'
@@ -296,12 +351,7 @@ export class DashboardPage implements OnInit {
         ],
         colorByPoint: true,
         groupPadding: 0,
-        data: [
-          ['Corn', 3700],
-          ['Peanut', 3100],
-          ['Bean', 2700],
-          ['Rice', 2200],
-        ],
+        data: data,
         dataLabels: {
           enabled: true,
           rotation: -90,
@@ -316,7 +366,7 @@ export class DashboardPage implements OnInit {
         }
       }]
     };
-    this.cropChart = new Chart(
+    this.yieldChart = new Chart(
       opts
     );
   }

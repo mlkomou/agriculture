@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController} from "@ionic/angular";
+import {InfiniteScrollCustomEvent, ModalController} from "@ionic/angular";
 import {Preferences} from "@capacitor/preferences";
 import {Cow} from "../model/cow";
 import {AddCowPage} from "./add-cow/add-cow.page";
@@ -40,7 +40,7 @@ export class CowPage implements OnInit {
   }
 
   getCows(page: number, size: number) {
-    this.apiService.getCow(page, size).subscribe((res) => {
+    this.apiService.getCow(page, size, this.currentUser.id).subscribe((res) => {
       console.log(res);
       if (res.ok) {
         this.cows = res.data.content;
@@ -61,8 +61,33 @@ export class CowPage implements OnInit {
     });
     await modal.present();
     modal.onDidDismiss().then((result) => {
-      if (result.data == 1) {
+      if (result.data) {
         this.getCows(this.page, this.size);
+      }
+    });
+  }
+
+  handleRefresh(event) {
+    this.getCows(0, this.size);
+    event.target.complete();
+  }
+
+  onIonInfinite(ev) {
+    this.page++;
+    this.apiService.getCow(this.page, this.size, this.currentUser.id).subscribe((res) => {
+      console.log(this.page, this.size);
+      if (res.ok) {
+        let cowsDraft: Cow[] = res.data.content;
+        if (cowsDraft.length > 0) {
+          cowsDraft.forEach(value => {
+            this.cows.push(value);
+          });
+          (ev as InfiniteScrollCustomEvent).target.complete();
+          console.log(ev);
+        } else {
+          this.page--;
+          (ev as InfiniteScrollCustomEvent).target.complete();
+        }
       }
     });
   }
