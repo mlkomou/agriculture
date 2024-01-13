@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/for
 import {Farmer} from "../model/farmer";
 import {ApiService} from "../api.service";
 import {Router} from "@angular/router";
+import {NavController} from "@ionic/angular";
 
 export function matchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
   return (group: UntypedFormGroup) => {
@@ -21,12 +22,31 @@ export function matchingPasswords(passwordKey: string, passwordConfirmationKey: 
 export class SignupPage implements OnInit {
 farmerForm: FormGroup;
 creating: boolean = false;
+passType: string  = 'password';
+passConfType: string  = 'password';
   constructor(private fb: FormBuilder,
               private apiService: ApiService,
-              private router: Router) { }
+              private router: Router,
+              private nnavCtrl: NavController) { }
 
   ngOnInit() {
     this.createForm();
+  }
+
+  showPass() {
+    if (this.passType == 'password') {
+      this.passType = 'text';
+    } else {
+      this.passType = 'password';
+    }
+  }
+
+  showPassConf() {
+    if (this.passConfType == 'password') {
+      this.passConfType = 'text';
+    } else {
+      this.passConfType = 'password';
+    }
   }
 
   formatForm(form: FormGroup): Farmer {
@@ -53,7 +73,7 @@ creating: boolean = false;
         this.creating = false;
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        this.router.navigate(['home']);
+        this.nnavCtrl.navigateRoot('home');
       } else {
         this.creating = false;
       }

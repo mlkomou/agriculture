@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8082/gamo'
+  apiUrl: 'https://bfa.ypa.mybluehost.me:8443/gamo'
 };

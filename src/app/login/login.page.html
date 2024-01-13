@@ -21,8 +21,10 @@
     <ion-card *ngIf="userPresent == true" class="inputCard">
       <ion-item>
         <ion-icon name="lock-closed" color="primary" slot="start"></ion-icon>
+        <ion-icon *ngIf="passType == 'password'" (click)="showPass()" name="eye" color="primary" slot="end"></ion-icon>
+        <ion-icon *ngIf="passType == 'text'" (click)="showPass()" name="eye-off" color="primary" slot="end"></ion-icon>
         <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input formControlName="password"></ion-input>
+        <ion-input [type]="passType" formControlName="password"></ion-input>
       </ion-item>
     </ion-card>
   </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ModalController} from "@ionic/angular";
+import {AlertController, ModalController} from "@ionic/angular";
 import {CowPage} from "../cow/cow.page";
 import {FarmPage} from "../farm/farm.page";
 import {DashboardPage} from "../dashboard/dashboard.page";
@@ -21,6 +21,7 @@ Drilldown(Highcharts);
 import Exporting from 'highcharts/modules/exporting';
 import {DetailCowPage} from "../cow/detail-cow/detail-cow.page";
 import {Farmer} from "../model/farmer";
+import {Router} from "@angular/router";
 
 Exporting(Highcharts);
 
@@ -39,15 +40,38 @@ currentTab: any = 'seed';
   genderChart: Chart;
   milkprodChart: Chart;
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController,
+              private alertCtrl: AlertController,
+              private router: Router) {
     this.getfarmsprod();
     this.getCows();
     this.showGendreChart();
     this.showMilProdChart();
 
-    if (this.currentUser) {
-      console.log('currentUser', this.currentUser);
-    }
+
+    // if (this.currentUser) {
+    //   console.log('currentUser', this.currentUser);
+    // }
+  }
+
+  async signout() {
+    const alert = await this.alertCtrl.create({
+      header: "Déconnexion",
+      message: "Voulez-vous être déconnecté ?",
+      buttons: [
+        {
+          text: "Non"
+        }, {
+        text: "Oui",
+          handler: () => {
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            this.router.navigate(['login']);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   showGendreChart() {
@@ -228,20 +252,7 @@ currentTab: any = 'seed';
     });
   }
 
-  async goToAddCow(data: Cow) {
-    const modal = await this.modalCtrl.create({
-      component: AddCowPage,
-      componentProps: {
-        data: data
-      }
-    });
-    await modal.present();
-    modal.onDidDismiss().then((result) => {
-      if (result.data == 1) {
-        this.getfarmsprod();
-      }
-    });
-  }
+
 
   goToCow() {
     this.openPage(CowPage, 'cow');
@@ -257,12 +268,4 @@ currentTab: any = 'seed';
     this.openPage(LearningPage, 'learning');
   }
 
-
-  getSgmentValue(ev) {
-    this.currentTab = ev.detail.value;
-    if (this.currentTab == 'statistic') {
-      this.showGendreChart();
-      this.showMilProdChart();
-    }
-  }
 }

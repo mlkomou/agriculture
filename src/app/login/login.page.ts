@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ApiService} from "../api.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,11 @@ userForm: FormGroup;
   userPresent: boolean = false;
   checking: boolean = false;
   signing: boolean = false;
+  passType: string = 'password';
   constructor(private router: Router,
               private apiService: ApiService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private navCtrl: NavController,) { }
 
   ngOnInit() {
     this.createForm();
@@ -27,6 +30,14 @@ userForm: FormGroup;
       email: [null, Validators.required],
       password: []
     });
+  }
+
+  showPass() {
+    if (this.passType == 'text') {
+      this.passType = 'password';
+    } else {
+      this.passType = 'text';
+    }
   }
   checkUser(phone: string) {
     if (this.userForm.valid) {
@@ -64,7 +75,7 @@ userForm: FormGroup;
         // this.router.navigate(['home']);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        this.router.navigate(['home']);
+        this.navCtrl.navigateRoot('home');
       } else {
         this.signing = false;
         this.apiService.showToast(res.message, 3000, 'danger', 'top');
