@@ -20,8 +20,8 @@
           <span style="font-size: 12px; color: green;">{{cowFrom?.controls['gender'].value}}</span>
         </div>
 
-        <h3 *ngIf="!data">Nouvel animal</h3>
-        <h3 *ngIf="data">Modification de l'animal {{data?.id}} </h3>
+        <h5 *ngIf="!data">Nouvel/New - animal</h5>
+        <h5 *ngIf="data">Modification de l'animal {{data?.id}} </h5>
       </ion-col>
 
       <ion-col size="4">
@@ -55,51 +55,59 @@
 
   <div style="padding: 15px;">
     <div [formGroup]="cowFrom">
-<!--      <ion-item>-->
-<!--        <ion-label position="floating">ID</ion-label>-->
-<!--        <ion-input type="number" formControlName="id"></ion-input>-->
-<!--      </ion-item>-->
+      <ion-item>
+        <ion-label position="floating">Identification</ion-label>
+        <ion-input type="number" formControlName="identification"></ion-input>
+      </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Gender</ion-label>
+        <ion-label position="floating">Genre/Gender</ion-label>
               <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
-                <ion-select-option value="Sir">Sir</ion-select-option>
-                <ion-select-option value="Dame">Dame</ion-select-option>
+                <ion-select-option value="Sir">Taureau/Bull</ion-select-option>
+                <ion-select-option value="Dame">Génisse/Heifer</ion-select-option>
               </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Insemination Cost</ion-label>
-        <ion-input (ionInput)="getinseminationCost($event)" type="number" formControlName="inseminationCost"></ion-input>
+        <ion-label position="floating">Géniteur</ion-label>
+        <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
+          <ion-select-option value="Sir">Géniteur/Sire</ion-select-option>
+          <ion-select-option value="Dame">Génitrice/Dame</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Insemination Date</ion-label>
+        <ion-label position="floating">Date insémination</ion-label>
         <ion-input type="date" formControlName="inseminationDate"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Calving Date</ion-label>
+        <ion-label position="floating">Coûts insémination</ion-label>
+        <ion-input (ionInput)="getinseminationCost($event)" type="number" formControlName="inseminationCost"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Date vêlage</ion-label>
         <ion-input type="date" formControlName="calvingDate"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Feed</ion-label>
+        <ion-label position="floating">Coûts aliment bétail</ion-label>
         <ion-input type="number" formControlName="feed"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Vet Cost</ion-label>
+        <ion-label position="floating">Coûts vétérinaire</ion-label>
         <ion-input type="number" formControlName="vetCost"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Milk Production</ion-label>
+        <ion-label position="floating">Production laitière/Kg/Jour</ion-label>
         <ion-input type="number" formControlName="milkProduction"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Milk Price</ion-label>
+        <ion-label position="floating">Prix du lait</ion-label>
         <ion-input type="number" formControlName="milkPrice"></ion-input>
       </ion-item>
 

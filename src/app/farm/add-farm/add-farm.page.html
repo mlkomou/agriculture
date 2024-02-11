@@ -20,8 +20,8 @@
           <span style="font-size: 12px; color: green;">{{seedFrom?.controls['crop'].value}}</span>
         </div>
 
-        <h3 *ngIf="!data">Nouvelle graine</h3>
-        <h3 *ngIf="data">Modification de la graine {{data?.id}} </h3>
+        <h3 *ngIf="!data">Nouveau champs</h3>
+        <h3 *ngIf="data">Modification du champs {{data?.id}} </h3>
       </ion-col>
 
       <ion-col size="4">
@@ -57,12 +57,17 @@
     <div style="padding: 15px;">
       <div [formGroup]="seedFrom">
         <ion-item>
-          <ion-label position="floating">Area</ion-label>
+          <ion-label position="floating">Identification</ion-label>
+          <ion-input type="number" formControlName="identification"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Superficie</ion-label>
           <ion-input type="number" formControlName="area"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Crop</ion-label>
+          <ion-label position="floating">Culture</ion-label>
           <ion-select label-placement="floating" formControlName="crop" aria-label="Crop" interface="action-sheet">
             <ion-select-option *ngFor="let cr of crops" [value]="cr.name">{{cr?.name}}</ion-select-option>
           </ion-select>
@@ -70,45 +75,76 @@
 
 
         <ion-item>
-          <ion-label position="floating">Seed Cost</ion-label>
+          <ion-label position="floating">Coûts sémences</ion-label>
           <ion-input type="number" formControlName="seedCost"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Fertilizer Cost 1</ion-label>
-          <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Fertilizer Cost 2</ion-label>
-          <ion-input type="number" formControlName="fertilizerCost2"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Cerbicide Cost</ion-label>
-          <ion-input type="number" formControlName="herbicideCost2"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Labor Cost</ion-label>
+          <ion-label position="floating">Coûts labour par hectar</ion-label>
           <ion-input type="number" formControlName="laborCost2"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Yield</ion-label>
+          <ion-label position="floating">Coûts semi par hectar</ion-label>
+          <ion-input type="number" formControlName="semiCost"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Coûts engrais par hectare</ion-label>
+          <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Coûts main d'oeuvre par hectare</ion-label>
+          <ion-input type="number" formControlName="fertilizerCost2"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Coûts irrigation par hectare</ion-label>
+          <ion-input type="number" formControlName="irrigationCost"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Coûts divers</ion-label>
+          <ion-input type="number" formControlName="diverseCost"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Coût total</ion-label>
+          <ion-input type="number" formControlName="totalCost"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Production par hectare</ion-label>
+          <ion-input type="number" formControlName="production"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Rendement/kg/hectare</ion-label>
           <ion-input type="number" formControlName="yield"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Sale Price</ion-label>
-          <ion-input type="number" formControlName="salePrice"></ion-input>
+          <ion-label position="floating">Prix marché du céréale au kg</ion-label>
+          <ion-input type="number" formControlName="marketPriceCereals"></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Revenue Totale à l'hectare</ion-label>
+          <ion-input type="number" formControlName="revenue"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Profits champs</ion-label>
+          <ion-input type="number" formControlName="revenue"></ion-input>
+        </ion-item>
+
 
       </div>
 
     <div>
       <ion-button [disabled]="saving == true || seedFrom.invalid" (click)="saveOrUpdata()" expand="block" shape="round">
-        Enregistrer la graine
+        Enregistrer
         <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
         <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
       </ion-button>

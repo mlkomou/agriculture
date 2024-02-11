@@ -8,7 +8,6 @@ import {Preferences} from "@capacitor/preferences";
 import {Farm} from "../model/farm";
 import {AddFarmPage} from "../farm/add-farm/add-farm.page";
 import {Cow} from "../model/cow";
-import {AddCowPage} from "../cow/add-cow/add-cow.page";
 import {Chart} from "angular-highcharts";
 import * as Highcharts from 'highcharts';
 
