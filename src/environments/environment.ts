@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://bfa.ypa.mybluehost.me:8443/gamo'
+  // apiUrl: 'https://bfa.ypa.mybluehost.me:8443/gamo'
 
-  // apiUrl: 'http://localhost:8082/gamo'
+  apiUrl: 'http://localhost:8082/gamo'
 };
 
 /*

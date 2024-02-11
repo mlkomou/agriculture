@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/forms";
 import {Farmer} from "../model/farmer";
 import {ApiService} from "../api.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NavController} from "@ionic/angular";
 
 export function matchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
@@ -24,13 +24,20 @@ farmerForm: FormGroup;
 creating: boolean = false;
 passType: string  = 'password';
 passConfType: string  = 'password';
+  phone: string;
   constructor(private fb: FormBuilder,
               private apiService: ApiService,
               private router: Router,
-              private nnavCtrl: NavController) { }
+              private nnavCtrl: NavController,
+              private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
-    this.createForm();
+    this.phone = this.route.snapshot.paramMap.get('phone');
+    if (this.phone) {
+      this.createForm(this.phone);
+    }
   }
 
   showPass() {
@@ -57,11 +64,11 @@ passConfType: string  = 'password';
     }
   }
 
-  createForm() {
+  createForm(phone: string) {
     this.farmerForm = this.fb.group({
       fullName: [null, Validators.required],
       password: [null, Validators.required],
-      phone: [null, Validators.required],
+      phone: [phone, Validators.required],
       confirmPassword: [null, Validators.required]
     }, {validator: matchingPasswords('password', 'confirmPassword')});
   }

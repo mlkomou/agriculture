@@ -14,7 +14,7 @@
           <span style="font-size: 12px; color: green;">{{cow?.gender}}</span>
         </div>
 
-        <h3>ID: {{cow?.id}}
+        <h3>ID: {{cow?.identification}}
         </h3>
         <ion-button (click)="goToAdd(cow)" mode="ios">
           <ion-icon size="40" name="create"></ion-icon>
@@ -32,64 +32,74 @@
       <ion-row>
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Géniteur</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.genitor}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Date insemination</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationDate | date: 'yyyy/MM/dd'}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts insemination</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationCost}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Date vêlage</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.calvingDate | date: 'yyyy/MM/dd'}}</span>
+        </ion-col>
+
+
+
+
+
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
           <span style="font-size: 12px;">Profit</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;">{{getProfitValue(cow)}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Expense</span> <br>
+          <span style="font-size: 12px;">Dépenses</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;"> {{getExpense(cow)}} </span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Icome</span> <br>
+          <span style="font-size: 12px;">Revenu</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;">{{getIncome(cow)}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Insemination Cost</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationCost}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Insemination Date</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationDate | date: 'yyyy/MM/dd'}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Calving Date</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.calvingDate | date: 'yyyy/MM/dd'}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="flask-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Milk Production</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkProduction}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Milk Price</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkPrice}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
           <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Feed</span> <br>
+          <span style="font-size: 12px;">Coûts aliment bétail</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.feed}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Vet Cost</span> <br>
+          <span style="font-size: 12px;">Coûts vétérinaire</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.vetCost}}</span>
         </ion-col>
 
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="flask-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Production laitière/kg/jour</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkProduction}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Prix du lait</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkPrice}}</span>
+        </ion-col>
 
       </ion-row>
     </ion-card>

@@ -51,6 +51,7 @@ export class AddCowPage implements OnInit {
   createForm(data: Cow) {
     this.cowFrom = this.fb.group({
       id: [data.id],
+      identification: [data.identification],
       gender: [data.gender, Validators.required],
       inseminationCost: [data.inseminationCost, Validators.required],
       inseminationDate: [data.inseminationDate, Validators.required],
@@ -59,6 +60,9 @@ export class AddCowPage implements OnInit {
       feed: [data.feed, Validators.required],
       vetCost: [data.vetCost, Validators.required],
       milkPrice: [data.milkPrice, Validators.required],
+      // new attr
+      genitor: [data.genitor, Validators.required],
+      // en new attr
       imagePath: [data.imagePath],
     });
   }
@@ -79,6 +83,7 @@ export class AddCowPage implements OnInit {
   formatForm(cow: Cow): Cow {
     return {
       id: cow.id,
+      identification: cow.identification,
       gender: cow.gender,
       inseminationCost: cow.inseminationCost,
       inseminationDate: new Date(cow.inseminationDate),
@@ -87,11 +92,13 @@ export class AddCowPage implements OnInit {
       feed: cow.feed,
       vetCost: cow.vetCost,
       milkPrice: cow.milkPrice,
+      genitor: cow.genitor,
       imagePath: cow.imagePath
     }
   }
   saveSeed() {
    if (this.cowFrom.valid) {
+     console.log(this.formatForm(this.cowFrom.value));
      this.saving = true;
      this.apiService.saveCow(this.formatForm(this.cowFrom.value), this.imageFile, this.currentUser.id).subscribe((res) => {
        if (res.ok) {
@@ -103,6 +110,7 @@ export class AddCowPage implements OnInit {
          this.apiService.showToast(res.message, 3000, 'danger', 'top');
        }
      }, error => {
+       console.log(error);
        this.saving = false;
        this.apiService.showToast("Erreur d'enregistrement de l'animal, veuillez réessayer plus tard", 3000, 'danger', 'top');
      });

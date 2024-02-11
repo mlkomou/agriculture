@@ -21,7 +21,7 @@
         </div>
 
         <h5 *ngIf="!data">Nouvel/New - animal</h5>
-        <h5 *ngIf="data">Modification de l'animal {{data?.id}} </h5>
+        <h5 *ngIf="data">Modification de l'animal {{data?.identification}} </h5>
       </ion-col>
 
       <ion-col size="4">
@@ -63,16 +63,16 @@
       <ion-item>
         <ion-label position="floating">Genre/Gender</ion-label>
               <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
-                <ion-select-option value="Sir">Taureau/Bull</ion-select-option>
-                <ion-select-option value="Dame">Génisse/Heifer</ion-select-option>
+                <ion-select-option value="Taureau/Bull">Taureau/Bull</ion-select-option>
+                <ion-select-option value="Génisse/Heifer">Génisse/Heifer</ion-select-option>
               </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Géniteur</ion-label>
-        <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
-          <ion-select-option value="Sir">Géniteur/Sire</ion-select-option>
-          <ion-select-option value="Dame">Génitrice/Dame</ion-select-option>
+        <ion-select label-placement="floating" formControlName="genitor" aria-label="Géniteur" interface="action-sheet">
+          <ion-select-option value="Géniteur/Sire">Géniteur/Sire</ion-select-option>
+          <ion-select-option value="Génitrice/Dame">Génitrice/Dame</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -102,7 +102,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Production laitière/Kg/Jour</ion-label>
+        <ion-label position="floating">Production laitière/kg/jour</ion-label>
         <ion-input type="number" formControlName="milkProduction"></ion-input>
       </ion-item>
 
@@ -115,7 +115,7 @@
 
     <div>
       <ion-button [disabled]="saving == true || cowFrom.invalid" (click)="saveOrUpdata()" expand="block" shape="round">
-        Save Cow
+        Enregistrer
         <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
         <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
       </ion-button>

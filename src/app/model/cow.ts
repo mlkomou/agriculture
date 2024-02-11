@@ -1,5 +1,6 @@
 export class Cow {
-  id: number;
+  id?: number;
+  identification?: number;
   gender: string;
   inseminationCost: number;
   inseminationDate: Date;
@@ -12,4 +13,5 @@ export class Cow {
   income?: number;
   profit?: number;
   imagePath?: string
+  genitor?: any;
 }

@@ -43,13 +43,12 @@ userForm: FormGroup;
     if (this.userForm.valid) {
       this.checking = true;
       this.apiService.checkUser(phone).subscribe((res) => {
-        console.log(res);
         if (res.ok) {
           this.checking = false;
           this.userPresent = true;
         } else {
           this.checking = false;
-          this.router.navigate(['signup']);
+          this.router.navigate(['signup/' + phone]);
           // this.apiService.showToast(res.message, 3000, 'danger', 'top');
         }
       }, error => {
