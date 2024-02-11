@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path: 'panier',
     loadChildren: () => import('./panier/panier.module').then( m => m.PanierPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
 ];
 
