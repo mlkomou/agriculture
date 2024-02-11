@@ -21,6 +21,7 @@ import Exporting from 'highcharts/modules/exporting';
 import {DetailCowPage} from "../cow/detail-cow/detail-cow.page";
 import {Farmer} from "../model/farmer";
 import {Router} from "@angular/router";
+import {EcommercePage} from "../ecommerce/ecommerce.page";
 
 Exporting(Highcharts);
 
@@ -265,6 +266,10 @@ currentTab: any = 'seed';
 
   goToLearning() {
     this.openPage(LearningPage, 'learning');
+  }
+
+  goToMarket() {
+    this.openPage(EcommercePage, 'market');
   }
 
 }

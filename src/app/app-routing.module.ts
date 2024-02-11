@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'signup/:phone',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
+  {
+    path: 'ecommerce',
+    loadChildren: () => import('./ecommerce/ecommerce.module').then( m => m.EcommercePageModule)
+  },
 ];
 
 @NgModule({
