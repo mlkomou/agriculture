@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
+import {PaymentPage} from "../payment/payment.page";
+import {CheckoutPage} from "../checkout/checkout.page";
 
 @Component({
   selector: 'app-panier',
@@ -13,6 +15,13 @@ export class PanierPage implements OnInit {
   ngOnInit() {
   }
 
+  async goToCheck() {
+    const modal = await this.modalCtrl.create({
+      component: CheckoutPage,
+      id: 'payment'
+    });
+    await modal.present();
+  }
   closeModal() {
     this.modalCtrl.dismiss();
   }

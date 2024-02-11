@@ -48,6 +48,14 @@ ion-item {
   font-size: 15px;
   font-weight: bold;
 }
+
+ion-content {
+  --ion-background-color: #eaeaea;
+}
+ion-card {
+  background-color: white;
+}
+
 //.itemCard {
 //  height: 200px;
 //}
