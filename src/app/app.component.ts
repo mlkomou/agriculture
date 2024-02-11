@@ -18,21 +18,21 @@ export class AppComponent {
       if (!res.value) {
         let seeds: Farm[] = [];
         seeds.push(
-          {
-            id: 1,
-            area: 109,
-            crop: "s",
-            seedCost: 103,
-            fertilizerCost1: 0,
-            fertilizerCost2: 0,
-            herbicideCost2: 0,
-            laborCost2: 0,
-            yield: 0,
-            salePrice: 0,
-            expense: 0,
-            grosseIncome: 0,
-            profit: 0,
-          }
+          // {
+          //   id: 1,
+          //   area: 109,
+          //   crop: "s",
+          //   seedCost: 103,
+          //   fertilizerCost1: 0,
+          //   fertilizerCost2: 0,
+          //   herbicideCost2: 0,
+          //   laborCost2: 0,
+          //   yield: 0,
+          //   salePrice: 0,
+          //   expense: 0,
+          //   grosseIncome: 0,
+          //   profit: 0,
+          // }
         );
         Preferences.set({
           key: 'seed',

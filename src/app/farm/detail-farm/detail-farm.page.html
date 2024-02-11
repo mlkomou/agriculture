@@ -14,7 +14,7 @@
           <span style="font-size: 12px; color: green;">{{farm?.crop}}</span>
         </div>
 
-        <h3>ID: {{farm?.id}}
+        <h3>ID: {{farm?.identification}}
         </h3>
         <ion-button (click)="goToAdd(farm)" mode="ios">
           <ion-icon size="40" name="create"></ion-icon>
@@ -30,6 +30,74 @@
   <div>
     <ion-card mode="ios">
       <ion-row>
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Superficie</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.area}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts sémences</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.seedCost}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts engrais par hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.fertilizerCost1}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts main d'oeuvre par hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.fertilizerCost2}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts irrigation par hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.irrigationCost}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts divers</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.diverseCost}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coût total</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.totalCost}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Production par hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.production}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Rendement/kg/hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.yield}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Prix marché du céréale au kg</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.marketPriceCereals}}</span>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="4">
+          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Revenue Totale à l'hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.revenue}}</span>
+        </ion-col>
+
+
+
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
           <span style="font-size: 12px;">Profit</span> <br>
@@ -50,52 +118,21 @@
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Area</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.area}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Seed Cost</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.seedCost}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Fertilizer Cost 1</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.fertilizerCost1}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Fertilizer Cost 2</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.fertilizerCost2}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="flask-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Herbicide Cost</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.herbicideCost2}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Labor Cost</span> <br>
+          <span style="font-size: 12px;">Coûts labour par hectar</span> <br>
           <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.laborCost2}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
-          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Yield</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.yield}}</span>
+          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
+          <span style="font-size: 12px;">Coûts semi par hectare</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.semiCost}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Sale Pricet</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.salePrice}}</span>
+          <span style="font-size: 12px;">Profits champs</span> <br>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.profit}}</span>
         </ion-col>
-
 
       </ion-row>
     </ion-card>

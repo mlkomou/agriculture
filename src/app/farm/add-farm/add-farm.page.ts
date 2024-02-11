@@ -58,15 +58,22 @@ export class AddFarmPage implements OnInit {
   createForm(data: Farm) {
     this.seedFrom = this.fb.group({
       id: [data.id],
+      identification: [data.identification],
       area: [data.area, Validators.required],
       crop: [data.crop, Validators.required],
       seedCost: [data.seedCost, Validators.required],
       fertilizerCost1: [data.fertilizerCost1, Validators.required],
       fertilizerCost2: [data.fertilizerCost2, Validators.required],
-      herbicideCost2: [data.herbicideCost2, Validators.required],
       laborCost2: [data.laborCost2, Validators.required],
       yield: [data.yield, Validators.required],
-      salePrice: [data.salePrice, Validators.required],
+      semiCost: [data.semiCost, Validators.required],
+      irrigationCost: [data.irrigationCost, Validators.required],
+      diverseCost: [data.diverseCost, Validators.required],
+      totalCost: [data.totalCost, Validators.required],
+      production: [data.production, Validators.required],
+      marketPriceCereals: [data.marketPriceCereals, Validators.required],
+      revenue: [data.revenue, Validators.required],
+      profit: [data.profit, Validators.required],
       imagePath: [data.imagePath],
     });
   }
@@ -87,6 +94,7 @@ export class AddFarmPage implements OnInit {
   formatForm(seed: Farm): Farm {
     return {
       id: seed.id,
+      identification: seed.identification,
       area: seed.area,
       crop: seed.crop,
       seedCost: seed.seedCost,
@@ -96,6 +104,14 @@ export class AddFarmPage implements OnInit {
       laborCost2: seed.laborCost2,
       yield: seed.yield,
       salePrice: seed.salePrice,
+      semiCost: seed.semiCost,
+      irrigationCost: seed.irrigationCost,
+      profit: seed.profit,
+      diverseCost:seed.diverseCost,
+      totalCost: seed.totalCost,
+      production: seed.production,
+      marketPriceCereals: seed.marketPriceCereals,
+      revenue: seed.revenue,
       imagePath: seed.imagePath
     }
   }

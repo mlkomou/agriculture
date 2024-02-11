@@ -13,4 +13,12 @@ export class Farm {
   grosseIncome?: number;
   profit?: number;
   imagePath?: string;
+  semiCost: any;
+  irrigationCost: any;
+  diverseCost: any;
+  totalCost: any;
+  production: any;
+  marketPriceCereals: any;
+  revenue: any;
+  identification: any;
 }
