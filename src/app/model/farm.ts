@@ -16,9 +16,9 @@ export class Farm {
   semiCost: any;
   irrigationCost: any;
   diverseCost: any;
-  totalCost: any;
-  production: any;
+  totalCost?: any;
+  production?: any;
   marketPriceCereals: any;
-  revenue: any;
+  revenue?: any;
   identification: any;
 }

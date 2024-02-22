@@ -14,4 +14,5 @@ export class Cow {
   profit?: number;
   imagePath?: string
   genitor?: any;
+  genitrice?: any;
 }

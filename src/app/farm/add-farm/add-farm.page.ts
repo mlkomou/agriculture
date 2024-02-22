@@ -69,11 +69,11 @@ export class AddFarmPage implements OnInit {
       semiCost: [data.semiCost, Validators.required],
       irrigationCost: [data.irrigationCost, Validators.required],
       diverseCost: [data.diverseCost, Validators.required],
-      totalCost: [data.totalCost, Validators.required],
-      production: [data.production, Validators.required],
+      // totalCost: [data.totalCost, Validators.required],
+      // production: [data.production, Validators.required],
       marketPriceCereals: [data.marketPriceCereals, Validators.required],
-      revenue: [data.revenue, Validators.required],
-      profit: [data.profit, Validators.required],
+      // revenue: [data.revenue, Validators.required],
+      // profit: [data.profit, Validators.required],
       imagePath: [data.imagePath],
     });
   }
@@ -108,8 +108,8 @@ export class AddFarmPage implements OnInit {
       irrigationCost: seed.irrigationCost,
       profit: seed.profit,
       diverseCost:seed.diverseCost,
-      totalCost: seed.totalCost,
-      production: seed.production,
+      // totalCost: seed.totalCost,
+      // production: seed.production,
       marketPriceCereals: seed.marketPriceCereals,
       revenue: seed.revenue,
       imagePath: seed.imagePath

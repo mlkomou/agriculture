@@ -62,6 +62,7 @@ export class AddCowPage implements OnInit {
       milkPrice: [data.milkPrice, Validators.required],
       // new attr
       genitor: [data.genitor, Validators.required],
+      genitrice: [data.genitrice, Validators.required],
       // en new attr
       imagePath: [data.imagePath],
     });

@@ -20,7 +20,7 @@
           <span style="font-size: 12px; color: green;">{{cowFrom?.controls['gender'].value}}</span>
         </div>
 
-        <h5 *ngIf="!data">Nouvel/New - animal</h5>
+        <h5 *ngIf="!data">Nouvel animal</h5>
         <h5 *ngIf="data">Modification de l'animal {{data?.identification}} </h5>
       </ion-col>
 
@@ -61,6 +61,16 @@
       </ion-item>
 
       <ion-item>
+        <ion-label position="floating">Génitrice</ion-label>
+        <ion-input type="text" formControlName="genitrice"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Géniteur</ion-label>
+        <ion-input type="text" formControlName="genitor"></ion-input>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="floating">Genre/Gender</ion-label>
               <ion-select label-placement="floating" formControlName="gender" aria-label="Gender" interface="action-sheet">
                 <ion-select-option value="Taureau/Bull">Taureau/Bull</ion-select-option>
@@ -68,17 +78,12 @@
               </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Géniteur</ion-label>
-        <ion-select label-placement="floating" formControlName="genitor" aria-label="Géniteur" interface="action-sheet">
-          <ion-select-option value="Géniteur/Sire">Géniteur/Sire</ion-select-option>
-          <ion-select-option value="Génitrice/Dame">Génitrice/Dame</ion-select-option>
-        </ion-select>
-      </ion-item>
+
 
       <ion-item>
-        <ion-label position="floating">Date insémination</ion-label>
-        <ion-input type="date" formControlName="inseminationDate"></ion-input>
+        <ion-label style="margin-bottom: 15px;" position="floating">Date insémination</ion-label>
+        <ion-datetime  formControlName="inseminationDate" presentation="date"></ion-datetime>
+<!--        <ion-input type="date" formControlName="inseminationDate"></ion-input>-->
       </ion-item>
 
       <ion-item>
@@ -87,8 +92,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Date vêlage</ion-label>
-        <ion-input type="date" formControlName="calvingDate"></ion-input>
+        <ion-label style="margin-bottom: 15px;" position="floating">Date vêlage</ion-label>
+        <ion-datetime formControlName="calvingDate" presentation="date"></ion-datetime>
+<!--        <ion-input type="date" formControlName="calvingDate"></ion-input>-->
       </ion-item>
 
       <ion-item>
@@ -97,12 +103,12 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Coûts vétérinaire</ion-label>
+        <ion-label position="floating">Coûts vétérinaires</ion-label>
         <ion-input type="number" formControlName="vetCost"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Production laitière/kg/jour</ion-label>
+        <ion-label position="floating">Production laitière/Kgs/jour</ion-label>
         <ion-input type="number" formControlName="milkProduction"></ion-input>
       </ion-item>
 

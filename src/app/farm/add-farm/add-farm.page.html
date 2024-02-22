@@ -58,19 +58,20 @@
       <div [formGroup]="seedFrom">
         <ion-item>
           <ion-label position="floating">Identification</ion-label>
-          <ion-input type="number" formControlName="identification"></ion-input>
+          <ion-input type="text" formControlName="identification"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Superficie</ion-label>
-          <ion-input type="number" formControlName="area"></ion-input>
+          <ion-input type="text" formControlName="area"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Culture</ion-label>
-          <ion-select label-placement="floating" formControlName="crop" aria-label="Crop" interface="action-sheet">
-            <ion-select-option *ngFor="let cr of crops" [value]="cr.name">{{cr?.name}}</ion-select-option>
-          </ion-select>
+          <ion-input type="number" formControlName="crop"></ion-input>
+<!--          <ion-select label-placement="floating" formControlName="crop" aria-label="Crop" interface="action-sheet">-->
+<!--            <ion-select-option *ngFor="let cr of crops" [value]="cr.name">{{cr?.name}}</ion-select-option>-->
+<!--          </ion-select>-->
         </ion-item>
 
 
@@ -109,15 +110,15 @@
           <ion-input type="number" formControlName="diverseCost"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Coût total</ion-label>
-          <ion-input type="number" formControlName="totalCost"></ion-input>
-        </ion-item>
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">Coût total</ion-label>-->
+<!--          <ion-input type="number" formControlName="totalCost"></ion-input>-->
+<!--        </ion-item>-->
 
-        <ion-item>
-          <ion-label position="floating">Production par hectare</ion-label>
-          <ion-input type="number" formControlName="production"></ion-input>
-        </ion-item>
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">Production par hectare</ion-label>-->
+<!--          <ion-input type="number" formControlName="production"></ion-input>-->
+<!--        </ion-item>-->
 
         <ion-item>
           <ion-label position="floating">Rendement/kg/hectare</ion-label>
@@ -129,15 +130,15 @@
           <ion-input type="number" formControlName="marketPriceCereals"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Revenue Totale à l'hectare</ion-label>
-          <ion-input type="number" formControlName="revenue"></ion-input>
-        </ion-item>
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">Revenue Totale à l'hectare</ion-label>-->
+<!--          <ion-input type="number" formControlName="revenue"></ion-input>-->
+<!--        </ion-item>-->
 
-        <ion-item>
-          <ion-label position="floating">Profits champs</ion-label>
-          <ion-input type="number" formControlName="profit"></ion-input>
-        </ion-item>
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">Profits champs</ion-label>-->
+<!--          <ion-input type="number" formControlName="profit"></ion-input>-->
+<!--        </ion-item>-->
 
 
       </div>
