@@ -83,22 +83,20 @@ prodAndQty: any[] = [];
       });
       localStorage.setItem('cart', JSON.stringify(proQty));
     }
-
   }
 
 
   async goToCheckout() {
    let cart: ProdAndQty[] = JSON.parse(localStorage.getItem("cart"));
     if (cart) {
-      console.log('Cart present', cart);
       let index = cart.findIndex(value => {
         return value.product.id == this.product.id;
       });
       if (index == -1) {
-        console.log('product not Present', index);
         this.productService.showToast("Ce produit existe déjà dans le panier", 2000, 'bottom', 'secondary');
       } else {
-
+        cart[index].qty = this.qty;
+        localStorage.setItem("cart", JSON.stringify(cart));
       }
     } else {
       console.log('cart not present');

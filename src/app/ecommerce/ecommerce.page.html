@@ -17,7 +17,7 @@
         <ion-badge *ngIf="!carts" style="position: absolute; top: 25%;" color="danger">
           0
         </ion-badge>
-        <ion-button fill="clear" mode="ios" (click)="goToCart()">
+        <ion-button  fill="clear" mode="ios" (click)="goToCart()">
           <ion-icon name="cart" size="25"></ion-icon>
         </ion-button>
       </ion-col>
@@ -29,11 +29,11 @@
 <ion-content [fullscreen]="true">
   <div>
     <ion-row>
-      <ion-col (click)="goToDetail(prod?.id)" class="ion-no-padding ion-no-margin" size="6" *ngFor="let prod of products">
-        <ion-button mode="ios" class="cartIcon ion-no-padding">
+      <ion-col class="ion-no-padding ion-no-margin" size="6" *ngFor="let prod of products">
+        <ion-button (click)="addToCart(prod)" mode="ios" class="cartIcon ion-no-padding">
           <ion-icon style="font-size: 35px;" name="cart"></ion-icon>
         </ion-button>
-        <ion-card button="" mode="ios">
+        <ion-card (click)="goToDetail(prod?.id)" button="" mode="ios">
 
           <img style="width: 150px; height: 150px;" [src]="productService.makeDownloadImage(prod?.imagePath)">
 
