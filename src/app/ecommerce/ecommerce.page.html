@@ -24,16 +24,18 @@
 <ion-content [fullscreen]="true">
   <div>
     <ion-row>
-      <ion-col (click)="goToDetail()" class="ion-no-padding ion-no-margin" size="6" *ngFor="let prod of [1, 1, 1, 1]">
+      <ion-col (click)="goToDetail(prod?.id)" class="ion-no-padding ion-no-margin" size="6" *ngFor="let prod of products">
         <ion-button mode="ios" class="cartIcon ion-no-padding">
           <ion-icon style="font-size: 35px;" name="cart"></ion-icon>
         </ion-button>
         <ion-card button="" mode="ios">
 
-          <img style="width: 150px; height: 150px;" src="assets/img/prod1.jpeg">
+          <img style="width: 150px; height: 150px;" [src]="productService.makeDownloadImage(prod?.imagePath)">
 
-          <span class="prodParam">Prod name</span> <br>
-          <span class="prodParam" style="color: var(--ion-color-primary)">20 000 FCFA</span>
+          <span class="prodParam">{{prod?.name}}</span> <br>
+          <span class="prodParam" style="color: var(--ion-color-primary)">
+
+           {{prod?.price}} FCFA</span>
         </ion-card>
       </ion-col>
     </ion-row>

@@ -17,26 +17,26 @@
 <ion-content [fullscreen]="true">
 <div style="text-align: center;">
   <ion-card>
-    <img style="border-radius: 10px; height: 200px;" src="assets/img/prod1.jpeg">
+    <img style="border-radius: 10px; height: 200px;" [src]="productService.makeDownloadImage(product?.imagePath)">
     <ion-row>
       <ion-col size="3"> </ion-col>
       <ion-col class="ion-no-margin ion-no-padding" size="2">
-        <ion-button size="full" class="ion-no-margin ion-no-padding">-</ion-button>
+        <ion-button (click)="decreasePrice()" size="full" class="ion-no-margin ion-no-padding">-</ion-button>
       </ion-col>
       <ion-col class="ion-no-margin ion-no-padding" size="2">
-        <ion-button color="light" size="full" class="ion-no-margin ion-no-padding">5</ion-button>
+        <ion-button color="light" size="full" class="ion-no-margin ion-no-padding">{{qty}}</ion-button>
       </ion-col>
       <ion-col class="ion-no-margin ion-no-padding" size="2">
-        <ion-button size="full" class="ion-no-margin ion-no-padding">+</ion-button>
+        <ion-button (click)="increasePrice()" size="full" class="ion-no-margin ion-no-padding">+</ion-button>
       </ion-col>
       <ion-col size="3"> </ion-col>
     </ion-row>
 
-    <h3>Prod name</h3>
-    <h3>20 000 FCFA</h3>
+    <h3>{{product?.name}}</h3>
+    <h3>{{product?.price * qty}} FCFA</h3>
 
     <div>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+      {{product?.description}}
     </div>
 
     <ion-row>
@@ -45,7 +45,7 @@
       </ion-col>
 
       <ion-col size="6">
-        <ion-button expand="block"  mode="ios" color="secondary">Ajouter au panier</ion-button>
+        <ion-button (click)="addToCart(product)" expand="block"  mode="ios" color="secondary">Ajouter au panier</ion-button>
       </ion-col>
     </ion-row>
   </ion-card>

@@ -9,6 +9,10 @@ ion-card {
   padding: 10px;
   font-weight: bold;
   color: black;
+
+  overflow: hidden;
+  max-width: 50px;
+  white-space: nowrap;
 }
 .cartIcon {
   position: absolute;

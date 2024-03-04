@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {DetailProductPage} from "./detail-product/detail-product.page";
 import {PanierPage} from "./panier/panier.page";
+import {ProductService} from "./product.service";
 
 @Component({
   selector: 'app-ecommerce',
@@ -9,16 +10,23 @@ import {PanierPage} from "./panier/panier.page";
   styleUrls: ['./ecommerce.page.scss'],
 })
 export class EcommercePage implements OnInit {
-
-  constructor(private modalCtrl: ModalController) { }
+page: number = 0;
+size: number = 20;
+products: any[] = [];
+  constructor(private modalCtrl: ModalController,
+              public productService: ProductService) { }
 
   ngOnInit() {
+    this.getProducts(this.page, this.size);
   }
 
-  async goToDetail() {
+  async goToDetail(id: number) {
     const modal = await this.modalCtrl.create({
       component: DetailProductPage,
-      id: 'detail-product'
+      id: 'detail-product',
+      componentProps: {
+        id: id
+      }
     });
     await modal.present();
   }
@@ -33,5 +41,13 @@ export class EcommercePage implements OnInit {
       id: 'panier'
     });
     await modal.present();
+  }
+
+  getProducts(page: number, size: number) {
+    this.productService.getProducts(page, size).subscribe((res) => {
+      if (res.ok) {
+        this.products = res.data.content;
+      }
+    });
   }
 }

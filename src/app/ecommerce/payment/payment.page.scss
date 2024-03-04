@@ -4,3 +4,6 @@ ion-content {
 ion-card {
   background-color: white;
 }
+.selected {
+  border: 2px var(--ion-color-primary) solid;
+}

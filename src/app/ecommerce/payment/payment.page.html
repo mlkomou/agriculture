@@ -21,21 +21,15 @@
         Choisissez un moyen de paiement
       </div>
       <ion-row>
-        <ion-col class="ion-text-center" size="4">
-          <img style="height: 50px;" src="assets/img/om.png">
-        </ion-col>
-        <ion-col class="ion-text-center" size="4">
-          <img style="height: 50px;" src="assets/img/moov.png">
-        </ion-col>
-        <ion-col class="ion-text-center" size="4">
-          <img style="height: 50px;" src="assets/img/visa.jpg">
+        <ion-col (click)="selectPay(i)" *ngFor="let pay of payments; let i = index" class="ion-text-center" [class]="currentPayIndex == i ? 'selected' : ''" size="4">
+          <img style="height: 50px;" [src]="pay?.logo">
         </ion-col>
       </ion-row>
     </ion-card>
 
   <div style="padding: 15px;">
     <ion-col>
-      <ion-button  expand="block" mode="ios">Payer 200 000 FCFA</ion-button>
+      <ion-button (click)="payOrder()" expand="block" mode="ios">Payer {{totalPrice * totalQty}} FCFA</ion-button>
     </ion-col>
   </div>
   </div>
