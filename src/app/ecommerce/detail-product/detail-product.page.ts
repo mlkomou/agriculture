@@ -70,9 +70,9 @@ prodAndQty: any[] = [];
           product: product
         });
         localStorage.setItem('cart', JSON.stringify(oldCart));
-        this.productService.showToast('Ajouté dans le panier', 3000, 'top', 'success');
+        this.productService.showToast('Ajouté dans le panier', 3000, 'bottom', 'success');
       } else {
-        this.productService.showToast('Ce produit existe déjà dans le panier', 3000, 'top', 'secondary');
+        this.productService.showToast('Ce produit existe déjà dans le panier', 3000, 'bottom', 'secondary');
       }
 
     } else {
@@ -88,10 +88,24 @@ prodAndQty: any[] = [];
 
 
   async goToCheckout() {
-   let prodQties: ProdAndQty[] = [];
-   prodQties.push(this.prodAndQty1);
-   localStorage.setItem("cart", JSON.stringify(prodQties));
+   let cart: ProdAndQty[] = JSON.parse(localStorage.getItem("cart"));
+    if (cart) {
+      console.log('Cart present', cart);
+      let index = cart.findIndex(value => {
+        return value.product.id == this.product.id;
+      });
+      if (index == -1) {
+        console.log('product not Present', index);
+        this.productService.showToast("Ce produit existe déjà dans le panier", 2000, 'bottom', 'secondary');
+      } else {
 
+      }
+    } else {
+      console.log('cart not present');
+      let prodQties: ProdAndQty[] = [];
+      prodQties.push(this.prodAndQty1);
+      localStorage.setItem("cart", JSON.stringify(prodQties));
+    }
     const modal = await this.modalCtrl.create({
       component: CheckoutPage,
       id: 'checkout',
