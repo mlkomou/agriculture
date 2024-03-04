@@ -11,7 +11,12 @@
       </ion-col>
 
       <ion-col size="2">
-        <ion-badge style="position: absolute; top: 25%;" color="danger">5</ion-badge>
+        <ion-badge *ngIf="carts" style="position: absolute; top: 25%;" color="danger">
+          {{carts?.length}}
+        </ion-badge>
+        <ion-badge *ngIf="!carts" style="position: absolute; top: 25%;" color="danger">
+          0
+        </ion-badge>
         <ion-button fill="clear" mode="ios" (click)="goToCart()">
           <ion-icon name="cart" size="25"></ion-icon>
         </ion-button>

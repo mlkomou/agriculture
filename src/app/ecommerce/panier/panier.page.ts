@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
-import {PaymentPage} from "../payment/payment.page";
 import {CheckoutPage} from "../checkout/checkout.page";
+import {ProdAndQty} from "../product";
+import {ProductService} from "../product.service";
 
 @Component({
   selector: 'app-panier',
@@ -9,10 +10,29 @@ import {CheckoutPage} from "../checkout/checkout.page";
   styleUrls: ['./panier.page.scss'],
 })
 export class PanierPage implements OnInit {
-
-  constructor(private modalCtrl: ModalController) { }
+carts: ProdAndQty[] = JSON.parse(localStorage.getItem("cart"));
+  totalPrice: number = 0;
+  totalQty: number = 0;
+  constructor(private modalCtrl: ModalController,
+              public prodService: ProductService
+              ) { }
 
   ngOnInit() {
+    if (this.carts) {
+      this.calculateToTalPrice(this.carts);
+    }
+  }
+
+  calculateToTalPrice(prodQties: ProdAndQty[]) {
+    let priceArr: number[] = [];
+    let qtyArr: number[] = [];
+    prodQties.forEach(value => {
+      priceArr.push(value.product.price);
+      qtyArr.push(value.qty);
+    });
+
+    this.totalPrice = priceArr.reduce((a, b) => a + b, 0);
+    this.totalQty = qtyArr.reduce((a, b) => a + b, 0);
   }
 
   async goToCheck() {

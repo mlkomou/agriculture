@@ -30,6 +30,7 @@
   <div style="padding: 15px;">
     <ion-col>
       <ion-button (click)="payOrder()" expand="block" mode="ios">Payer {{totalPrice * totalQty}} FCFA</ion-button>
+      <ion-spinner name="crescent" *ngIf="saving == true"></ion-spinner>
     </ion-col>
   </div>
   </div>

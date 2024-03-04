@@ -68,7 +68,8 @@
       </ion-col>
 
       <ion-col size="6">
-        <ion-button expand="block"  mode="ios" color="secondary">À la livraison</ion-button>
+        <ion-button [disabled]="saving == true" (click)="payForDeliver()" expand="block"  mode="ios" color="secondary">À la livraison</ion-button>
+        <ion-spinner name="crescent" *ngIf="saving == true"></ion-spinner>
       </ion-col>
     </ion-row>
   </ion-footer>

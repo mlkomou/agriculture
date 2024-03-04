@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {OrderData, ProdAndQty} from "../product";
+import {ProductService} from "../product.service";
 
 @Component({
   selector: 'app-payment',
@@ -32,7 +33,8 @@ export class PaymentPage implements OnInit {
   currentPayIndex: number;
   currentUser: any = JSON.parse(localStorage.getItem("user"));
   currentPayment: string;
-  constructor(private modalCtrl: ModalController) { }
+  saving: boolean = false;
+  constructor(private modalCtrl: ModalController, private prodService: ProductService) { }
 
   ngOnInit() {
     if (this.prodQties) {
@@ -70,6 +72,21 @@ export class PaymentPage implements OnInit {
   }
 
   payOrder() {
-    console.log(this.formatOrderData());
+    this.saving = true;
+    this.prodService.saveOrder(this.formatOrderData()).subscribe((res) => {
+      console.log(res);
+      if (res.ok) {
+        this.saving = false;
+        // this.modalCtrl.dismiss(null, null, 'detail-product');
+        this.modalCtrl.dismiss();
+        this.prodService.showToast(res.message, 3000, 'bottom', 'success');
+        localStorage.removeItem("cart");
+      } else {
+        this.saving = false;
+      }
+    }, error => {
+      this.saving = false;
+    });
+    // console.log(this.formatOrderData());
   }
 }

@@ -20,6 +20,10 @@ apiUrl: string = environment.apiUrl + "/products";
     return this.http.get<Iresponse>(`${this.apiUrl}/by-id/${id}`);
   }
 
+  saveOrder(prodOrder: any): Observable<Iresponse> {
+    return this.http.post<Iresponse>(`${this.apiUrl}/save-order`, prodOrder);
+  }
+
   public makeDownloadImage(filname: string): string {
     return `${environment.apiUrl}/downloads/${filname}`;
   }

@@ -3,6 +3,8 @@ import {ModalController} from "@ionic/angular";
 import {DetailProductPage} from "./detail-product/detail-product.page";
 import {PanierPage} from "./panier/panier.page";
 import {ProductService} from "./product.service";
+import {ProdAndQty} from "./product";
+import {CheckoutPage} from "./checkout/checkout.page";
 
 @Component({
   selector: 'app-ecommerce',
@@ -13,6 +15,7 @@ export class EcommercePage implements OnInit {
 page: number = 0;
 size: number = 20;
 products: any[] = [];
+carts: ProdAndQty[] = JSON.parse(localStorage.getItem('cart'));
   constructor(private modalCtrl: ModalController,
               public productService: ProductService) { }
 
@@ -36,11 +39,13 @@ products: any[] = [];
   }
 
   async goToCart() {
-    const modal = await this.modalCtrl.create({
-      component: PanierPage,
-      id: 'panier'
-    });
-    await modal.present();
+    if (this.carts && this.carts.length > 0) {
+      const modal = await this.modalCtrl.create({
+        component: CheckoutPage,
+        id: 'panier'
+      });
+      await modal.present();
+    }
   }
 
   getProducts(page: number, size: number) {
