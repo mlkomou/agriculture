@@ -66,6 +66,7 @@ carts: ProdAndQty[] = JSON.parse(localStorage.getItem('cart'));
         product: product
       });
       localStorage.setItem('cart', JSON.stringify(proQty));
+      this.productService.showToast('Ajouté dans le panier', 3000, 'bottom', 'success');
     }
   }
 
