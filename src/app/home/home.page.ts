@@ -40,6 +40,17 @@ currentTab: any = 'seed';
   genderChart: Chart;
   milkprodChart: Chart;
 
+  languages: any[] = [
+    {
+      ln: 'Français',
+      img: 'assets/img/flag/france.png'
+    },
+    {
+      ln: 'Anglais',
+      img: 'assets/img/flag/us.png'
+    },
+  ];
+
   constructor(private modalCtrl: ModalController,
               private alertCtrl: AlertController,
               private router: Router) {
