@@ -1,0 +1,13 @@
+<ion-datetime presentation="date" [max]="taday" (ionChange)="getDateValue($event)" locale="fr-FR"></ion-datetime>
+<ion-row>
+  <ion-col size="6">
+    <ion-button (click)="cancel()" color="danger" mode="ios" shape="round">
+      Annuler
+    </ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button (click)="validate()" mode="ios" shape="round" color="success">
+      Valider
+    </ion-button>
+  </ion-col>
+</ion-row>

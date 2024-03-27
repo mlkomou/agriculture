@@ -63,8 +63,8 @@
       <ion-item>
         <ion-label position="floating">{{ "GAMOU.GENDER" | translate}}</ion-label>
         <ion-select label-placement="floating" formControlName="gender" interface="action-sheet">
-          <ion-select-option value="Taureau/Bull">Taureau/Bull</ion-select-option>
-          <ion-select-option value="Génisse/Heifer">Génisse/Heifer</ion-select-option>
+          <ion-select-option [value]="'GAMOU.TAUREAU' | translate">{{ "GAMOU.TAUREAU" | translate }}</ion-select-option>
+          <ion-select-option [value]="'GAMOU.GENISSE' | translate">{{ "GAMOU.GENISSE" | translate }}</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -78,12 +78,20 @@
         <ion-input type="text" formControlName="genitor"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label style="margin-bottom: 15px;" position="floating">
+      <ion-item button (click)="chooseInseminationDate()">
+        <ion-label  *ngIf="!inseminationDate" class="labelEl">
           {{"GAMOU.DATEINSEMINATION" | translate}}
         </ion-label>
-        <ion-datetime  formControlName="inseminationDate" presentation="date"></ion-datetime>
-<!--        <ion-input type="date" formControlName="inseminationDate"></ion-input>-->
+        <ion-label *ngIf="inseminationDate" position="floating" class="labelEl">
+          {{"GAMOU.DATEINSEMINATION" | translate}}
+        </ion-label>
+        <ion-input *ngIf="inseminationDate" readonly="" [value]="inseminationDate | date: 'dd/MM/yyyy'"></ion-input>
+
+
+<!--        <ion-label style="margin-bottom: 15px;" position="floating">-->
+<!--          {{"GAMOU.DATEINSEMINATION" | translate}}-->
+<!--        </ion-label>-->
+<!--        <ion-datetime  formControlName="inseminationDate" presentation="date"></ion-datetime>-->
       </ion-item>
 
       <ion-item>
@@ -93,11 +101,19 @@
         <ion-input (ionInput)="getinseminationCost($event)" type="number" formControlName="inseminationCost"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label style="margin-bottom: 15px;" position="floating">
+      <ion-item button (click)="chooseCalvingDate()">
+        <ion-label  *ngIf="!calvingDate" class="labelEl">
           {{"GAMOU.DATEVELAGE" | translate}}
         </ion-label>
-        <ion-datetime formControlName="calvingDate" presentation="date"></ion-datetime>
+        <ion-label *ngIf="calvingDate" position="floating" class="labelEl">
+          {{"GAMOU.DATEVELAGE" | translate}}
+        </ion-label>
+        <ion-input *ngIf="calvingDate" readonly="" [value]="calvingDate | date: 'dd/MM/yyyy'"></ion-input>
+
+<!--        <ion-label style="margin-bottom: 15px;" position="floating">-->
+<!--          {{"GAMOU.DATEVELAGE" | translate}}-->
+<!--        </ion-label>-->
+<!--        <ion-datetime formControlName="calvingDate" presentation="date"></ion-datetime>-->
 <!--        <ion-input type="date" formControlName="calvingDate"></ion-input>-->
       </ion-item>
 

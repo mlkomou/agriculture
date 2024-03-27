@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'ecommerce',
     loadChildren: () => import('./ecommerce/ecommerce.module').then( m => m.EcommercePageModule)
   },
+  {
+    path: 'date',
+    loadChildren: () => import('./date/date.module').then( m => m.DatePageModule)
+  },
 ];
 
 @NgModule({

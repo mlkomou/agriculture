@@ -33,6 +33,8 @@
     "RENDEMENT": "Yield/Kg/Hectare",
     "PRIXCEREALE": "Market price of cereal per kg",
     "NEWFARM": "New field",
-    "UPDATEFIELD": "Editing the field"
+    "UPDATEFIELD": "Editing the field",
+    "TAUREAU": "Bull",
+    "GENISSE": "Heifer"
   }
 }

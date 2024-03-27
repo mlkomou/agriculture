@@ -33,6 +33,8 @@
     "RENDEMENT": "Rendement/Kg/Hectare",
     "PRIXCEREALE": "Prix marché du céréale au Kg",
     "NEWFARM": "Nouveau champ",
-    "UPDATEFIELD": "Modification du champs"
+    "UPDATEFIELD": "Modification du champs",
+    "TAUREAU": "Taureau",
+    "GENISSE": "Génisse"
   }
 }

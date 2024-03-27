@@ -1,13 +1,14 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Farm} from "../../model/farm";
-import {ModalController} from "@ionic/angular";
+import {ModalController, PopoverController} from "@ionic/angular";
 import {ApiService} from "../../api.service";
 import {Preferences} from "@capacitor/preferences";
 import {Cow} from "../../model/cow";
 import {ImageCroppedEvent} from "ngx-image-cropper";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Farmer} from "../../model/farmer";
+import {DatePage} from "../../date/date.page";
 
 @Component({
   selector: 'app-add-cow',
@@ -26,10 +27,14 @@ export class AddCowPage implements OnInit {
   currentUser: Farmer = JSON.parse(localStorage.getItem("user"));
 
   @ViewChild('imagePicker') imagePicker: ElementRef;
+
+  inseminationDate: any;
+  calvingDate: any;
   constructor(private modalCtrl: ModalController,
               private fb: FormBuilder,
               public apiService: ApiService,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private popover: PopoverController) { }
 
   ngOnInit() {
     if (this.data) {
@@ -37,6 +42,38 @@ export class AddCowPage implements OnInit {
     } else {
       this.createForm(new Cow());
     }
+  }
+
+  async chooseInseminationDate() {
+    const pop = await this.popover.create({
+      component: DatePage,
+      backdropDismiss: false,
+      id: 'insemination'
+    });
+    await pop.present();
+    pop.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.inseminationDate = new Date(result.data);
+      } else {
+        this.cowFrom.value.inseminationDate = null;
+      }
+    });
+  }
+
+  async chooseCalvingDate() {
+    const pop = await this.popover.create({
+      component: DatePage,
+      backdropDismiss: false,
+      id: 'calving'
+    });
+    await pop.present();
+    pop.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.calvingDate = new Date(result.data);
+      } else {
+        this.cowFrom.value.calvingDate = null;
+      }
+    });
   }
 
   pickImage() {
@@ -87,8 +124,8 @@ export class AddCowPage implements OnInit {
       identification: cow.identification,
       gender: cow.gender,
       inseminationCost: cow.inseminationCost,
-      inseminationDate: new Date(cow.inseminationDate),
-      calvingDate: new Date(cow.calvingDate),
+      inseminationDate: new Date(this.inseminationDate),
+      calvingDate: new Date(this.calvingDate),
       milkProduction: cow.milkProduction,
       feed: cow.feed,
       vetCost: cow.vetCost,
