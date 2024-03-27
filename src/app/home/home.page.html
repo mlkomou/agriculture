@@ -34,8 +34,6 @@
             <img alt="Langue img" [src]="lg?.flag" />
           </ion-col>
           <ion-col size="9">
-<!--            <span *ngIf="item.lang == 'fr'" class="align-middle">{{"HOME.HEADER.FRENCH" | translate}}</span>-->
-<!--            <span *ngIf="item.lang == 'en'" class="align-middle">{{"HOME.HEADER.ENGLISH" | translate}}</span>-->
             <ion-label *ngIf="lg.lang == 'fr'">{{ "GAMOU.HOME.FRENCH" | translate }}</ion-label>
             <ion-label *ngIf="lg.lang == 'en'">{{ "GAMOU.HOME.ENGLISH" | translate }}</ion-label>
           </ion-col>

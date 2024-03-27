@@ -8,6 +8,31 @@
       "MARKET": "Market",
       "FRENCH": "French",
       "ENGLISH": "English"
-    }
+    },
+    "GENDER": "Gender",
+    "GENITEUR": "Genitor",
+    "GENITRICE": "Genitrice",
+    "DATEINSEMINATION": "Insemination date",
+    "COUTINSEMINATION": "Insemination costs",
+    "DATEVELAGE": "Calving date",
+    "COUTSALIMANENTBETAIL": "Livestock feed costs",
+    "COUTSVETERINAIRE": "Veterinary costs",
+    "PRODUCTIONLAIT": "Dairy production/Kgs/day",
+    "PRIXLAIT": "Milk price",
+    "SAVE": "Save",
+    "NEWANIMAL": "New animal",
+    "UPDATEANIMAL": "Editing the animal",
+    "AREA": "Area",
+    "SEEDCOST": "Seed costs",
+    "LABORCOST": "Plowing costs per hectare",
+    "FERTILIZERCOST": "Fertilizer costs",
+    "COUTSSEMI": "Coûts semi par hectare",
+    "COUTSMAINOEUVRE": "Labor costs",
+    "COUTSIRRIGATION": "Irrigation costs",
+    "COUTSDIVERS": "Miscellaneous costs",
+    "RENDEMENT": "Yield/Kg/Hectare",
+    "PRIXCEREALE": "Market price of cereal per kg",
+    "NEWFARM": "New field",
+    "UPDATEFIELD": "Editing the field"
   }
 }

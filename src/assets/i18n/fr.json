@@ -8,6 +8,31 @@
       "MARKET": "Marché",
       "FRENCH": "Français",
       "ENGLISH": "Anglais"
-    }
+    },
+    "GENDER": "Genre",
+    "GENITEUR": "Géniteur",
+    "GENITRICE": "Génitrice",
+    "DATEINSEMINATION": "Date insémination",
+    "COUTINSEMINATION": "Coûts insémination",
+    "DATEVELAGE": "Date vêlage",
+    "COUTSALIMANENTBETAIL": "Coûts aliment bétail",
+    "COUTSVETERINAIRE": "Coûts vétérinaires",
+    "PRODUCTIONLAIT": "Production laitière/Kgs/jour",
+    "PRIXLAIT": "Prix du lait",
+    "SAVE": "Enregistrer",
+    "NEWANIMAL": "Nouvel animal",
+    "UPDATEANIMAL": "Modification de l'animal",
+    "AREA": "Superficie",
+    "SEEDCOST": "Coûts semences",
+    "LABORCOST": "Coûts labour par hectare",
+    "FERTILIZERCOST": "Coûts engrais",
+    "COUTSSEMI": "Coûts semi par hectare",
+    "COUTSMAINOEUVRE": "Coûts main d'oeuvre",
+    "COUTSIRRIGATION": "Coûts irrigation",
+    "COUTSDIVERS": "Coûts divers",
+    "RENDEMENT": "Rendement/Kg/Hectare",
+    "PRIXCEREALE": "Prix marché du céréale au Kg",
+    "NEWFARM": "Nouveau champ",
+    "UPDATEFIELD": "Modification du champs"
   }
 }
