@@ -89,17 +89,17 @@ export class AddCowPage implements OnInit {
     this.cowFrom = this.fb.group({
       id: [data.id],
       identification: [data.identification],
-      gender: [data.gender, Validators.required],
-      inseminationCost: [data.inseminationCost, Validators.required],
-      inseminationDate: [data.inseminationDate, Validators.required],
-      calvingDate: [data.calvingDate, Validators.required],
-      milkProduction: [data.milkProduction, Validators.required],
-      feed: [data.feed, Validators.required],
-      vetCost: [data.vetCost, Validators.required],
-      milkPrice: [data.milkPrice, Validators.required],
+      gender: [data.gender],
+      inseminationCost: [data.inseminationCost],
+      inseminationDate: [data.inseminationDate],
+      calvingDate: [data.calvingDate],
+      milkProduction: [data.milkProduction],
+      feed: [data.feed],
+      vetCost: [data.vetCost],
+      milkPrice: [data.milkPrice],
       // new attr
-      genitor: [data.genitor, Validators.required],
-      genitrice: [data.genitrice, Validators.required],
+      genitor: [data.genitor],
+      genitrice: [data.genitrice],
       // en new attr
       imagePath: [data.imagePath],
     });
