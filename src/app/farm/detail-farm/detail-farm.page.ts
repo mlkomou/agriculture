@@ -44,14 +44,15 @@ export class DetailFarmPage implements OnInit {
   }
   getExpense(farm: Farm): number {
     let expense: number;
-      expense = farm.seedCost + farm.fertilizerCost1 + farm.fertilizerCost2 + farm.herbicideCost2 + farm.laborCost2
+      expense = farm.seedCost + farm.fertilizerCost1 + farm.fertilizerCost2 + farm.herbicideCost2 + farm.laborCost2 + farm.semiCost + farm.irrigationCost + farm.diverseCost
     return expense;
   }
 
   getIncome(farm: Farm): number {
     let icome: number;
     // if (farm.gender == 'Dame') {
-      icome = farm.salePrice * farm.yield;
+      icome = farm.marketPriceCereals * farm.yield;
+    // marketPriceCereals
     // } else {
     //   icome = cow.milkPrice * cow.milkProduction + cow.inseminationCost;
     // }

@@ -69,13 +69,7 @@
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
           <span style="font-size: 12px;">Coût total</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.totalCost}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Production par hectare</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.production}}</span>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{getExpense(farm)}}</span>
         </ion-col>
 
         <ion-col class="ion-text-center" size="4">
@@ -93,7 +87,7 @@
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
           <span style="font-size: 12px;">Revenue Totale à l'hectare</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.revenue}}</span>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{getIncome(farm)}}</span>
         </ion-col>
 
 
@@ -104,17 +98,8 @@
           <span style="color: black; font-size: 12px; font-weight: bold;">{{getProfitValue(farm)}}</span>
         </ion-col>
 
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Expense</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;"> {{getExpense(farm)}} </span>
-        </ion-col>
 
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Grosse Income</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{getIncome(farm)}}</span>
-        </ion-col>
+
 
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
@@ -131,7 +116,7 @@
         <ion-col class="ion-text-center" size="4">
           <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
           <span style="font-size: 12px;">Profits champs</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{farm?.profit}}</span>
+          <span style="color: black; font-size: 12px; font-weight: bold;">{{getProfitValue(farm)}}</span>
         </ion-col>
 
       </ion-row>

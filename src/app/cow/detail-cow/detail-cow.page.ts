@@ -41,7 +41,7 @@ export class DetailCowPage implements OnInit {
   }
   getExpense(cow: Cow): number {
     let expense: number;
-    if (cow.gender == 'Dame') {
+    if (cow.gender == 'Génisse') {
       expense = cow.vetCost + cow.feed + cow.inseminationCost
     } else {
       expense = cow.vetCost + cow.feed
@@ -52,10 +52,11 @@ export class DetailCowPage implements OnInit {
 
   getIncome(cow: Cow): number {
     let icome: number;
-    if (cow.gender == 'Dame') {
+    if (cow.gender == 'Génisse') {
       icome = cow.milkPrice * cow.milkProduction
     } else {
-      icome = cow.milkPrice * cow.milkProduction + cow.inseminationCost;
+      icome = cow.inseminationCost;
+      // icome = cow.milkPrice * cow.milkProduction + cow.inseminationCost;
     }
     return icome;
   }
