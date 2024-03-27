@@ -9,7 +9,7 @@
       </ion-col>
 
       <ion-col size="2">
-        <img id="click-trigger" style="height: 30px; margin-top: 15px;" src="assets/img/flag/france.png">
+        <img *ngIf="flagvalue" id="click-trigger" style="height: 30px; margin-top: 15px;" [src]="flagvalue">
       </ion-col>
 
       <ion-col size="2">
@@ -28,13 +28,16 @@
   <ion-popover trigger="click-trigger" triggerAction="click">
     <ng-template>
       <ion-content class="ion-padding">
-      <ion-item lines="none" mode="ios" button *ngFor="let lg of languages">
+      <ion-item (click)="setLanguage(lg.text, lg.lang, lg.flag)" lines="none" mode="ios" button *ngFor="let lg of listLang">
         <ion-row>
           <ion-col size="3">
-            <img alt="Langue img" [src]="lg?.img" />
+            <img alt="Langue img" [src]="lg?.flag" />
           </ion-col>
           <ion-col size="9">
-            <ion-label>{{ lg?.ln }}</ion-label>
+<!--            <span *ngIf="item.lang == 'fr'" class="align-middle">{{"HOME.HEADER.FRENCH" | translate}}</span>-->
+<!--            <span *ngIf="item.lang == 'en'" class="align-middle">{{"HOME.HEADER.ENGLISH" | translate}}</span>-->
+            <ion-label *ngIf="lg.lang == 'fr'">{{ "GAMOU.HOME.FRENCH" | translate }}</ion-label>
+            <ion-label *ngIf="lg.lang == 'en'">{{ "GAMOU.HOME.ENGLISH" | translate }}</ion-label>
           </ion-col>
         </ion-row>
       </ion-item>
@@ -72,35 +75,35 @@
       <ion-col class="ion-text-center" size="6">
        <ion-card (click)="goToCow()" class="itemCard" mode="ios" button="">
          <img class="menuImage" src="assets/img/cow.png">  <br>
-         <span class="menuTitle">Elevage</span>
+         <span class="menuTitle">{{ "GAMOU.HOME.ELEVAGE" | translate }}</span>
        </ion-card>
       </ion-col>
 
       <ion-col class="ion-text-center" size="6">
         <ion-card (click)="goToFarm()" class="itemCard" mode="ios" button="">
           <img class="menuImage" src="assets/img/flax-seed.png"> <br>
-          <span class="menuTitle">Agriculture</span>
+          <span class="menuTitle">{{ "GAMOU.HOME.AGRICULTURE" | translate }}</span>
         </ion-card>
       </ion-col>
 
       <ion-col class="ion-text-center" size="6">
         <ion-card (click)="goToDash()" class="itemCard" mode="ios" button="">
           <img class="menuImage" src="assets/img/dashboard.png">  <br>
-          <span class="menuTitle">Dashboard</span>
+          <span class="menuTitle">{{ "GAMOU.HOME.DASHBOARD" | translate }}</span>
         </ion-card>
       </ion-col>
 
       <ion-col class="ion-text-center" size="6">
         <ion-card (click)="goToLearning()" class="itemCard" mode="ios" button="">
           <img class="menuImage" src="assets/img/learning.png">  <br>
-          <span class="menuTitle">Learning</span>
+          <span class="menuTitle">{{ "GAMOU.HOME.LEARNING" | translate }}</span>
         </ion-card>
       </ion-col>
 
       <ion-col class="ion-text-center" size="12">
         <ion-card (click)="goToMarket()" class="itemCard" mode="ios" button="">
           <img class="menuImage" src="assets/img/shopping_cart.png">  <br>
-          <span class="menuTitle">Marché</span>
+          <span class="menuTitle">{{ "GAMOU.HOME.MARKET" | translate }}</span>
         </ion-card>
       </ion-col>
     </ion-row>

@@ -22,6 +22,8 @@ import {DetailCowPage} from "../cow/detail-cow/detail-cow.page";
 import {Farmer} from "../model/farmer";
 import {Router} from "@angular/router";
 import {EcommercePage} from "../ecommerce/ecommerce.page";
+import {LanguageService} from "../language.service";
+import {TranslateService} from "@ngx-translate/core";
 
 Exporting(Highcharts);
 
@@ -40,24 +42,29 @@ currentTab: any = 'seed';
   genderChart: Chart;
   milkprodChart: Chart;
 
-  languages: any[] = [
-    {
-      ln: 'Français',
-      img: 'assets/img/flag/france.png'
-    },
-    {
-      ln: 'Anglais',
-      img: 'assets/img/flag/us.png'
-    },
+  flagvalue: any;
+  countryName: any;
+  defaultFlag: string = '';
+  langStoreValue: string;
+  currentLang: any;
+  listLang = [
+    {text: "French", flag: "assets/img/flag/fr.png", lang: "fr", file: "assets/i18n/fr.json"},
+    {text: "English", flag: "assets/img/flag/en.png", lang: "en", file: "assets/i18n/en.json"}
   ];
 
   constructor(private modalCtrl: ModalController,
               private alertCtrl: AlertController,
-              private router: Router) {
+              private router: Router,
+              private languageService: LanguageService,
+              public translate: TranslateService) {
     this.getfarmsprod();
     this.getCows();
     this.showGendreChart();
     this.showMilProdChart();
+
+    this.flagvalue = "assets/img/flag/" + navigator.language.substring(0, 2) + ".png";
+    this.langStoreValue = navigator.language.substring(0, 2);
+    translate.use(this.langStoreValue);
 
 
     // if (this.currentUser) {
@@ -281,6 +288,17 @@ currentTab: any = 'seed';
 
   goToMarket() {
     this.openPage(EcommercePage, 'market');
+  }
+
+
+
+  setLanguage(text: string, lang: string, flag: string) {
+    this.countryName = text;
+    this.flagvalue = flag;
+    this.langStoreValue = lang;
+    this.currentLang = lang;
+    localStorage.setItem('lang', lang);
+    this.languageService.setLanguage(lang);
   }
 
 }

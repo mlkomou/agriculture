@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {AuthInterceptor} from "./login/auth.interceptor";
+import {LanguageService} from "./language.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import {AuthInterceptor} from "./login/auth.interceptor";
       useClass: AuthInterceptor,
       multi   : true
     },
+    LanguageService
   ],
   bootstrap: [AppComponent],
 })

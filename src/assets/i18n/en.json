@@ -1,0 +1,13 @@
+{
+  "GAMOU": {
+    "HOME": {
+      "ELEVAGE": "Breeding",
+      "AGRICULTURE": "Agriculture",
+      "DASHBOARD": "Dashboard",
+      "LEARNING": "Learning",
+      "MARKET": "Market",
+      "FRENCH": "French",
+      "ENGLISH": "English"
+    }
+  }
+}
