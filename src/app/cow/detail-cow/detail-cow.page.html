@@ -22,7 +22,8 @@
       </ion-col>
 
       <ion-col size="4">
-        <img style="border-radius: 15px;" [src]="apiService.makeDownloadImage(cow.imagePath)">
+        <img *ngIf="cow.imagePath" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(cow.imagePath)">
+        <img *ngIf="!cow.imagePath" style="border-radius: 15px;" src="assets/img/elevage.png">
       </ion-col>
     </ion-row>
   </div>

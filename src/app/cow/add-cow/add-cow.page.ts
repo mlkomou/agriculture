@@ -136,7 +136,6 @@ export class AddCowPage implements OnInit {
   }
   saveSeed() {
    if (this.cowFrom.valid) {
-     console.log(this.formatForm(this.cowFrom.value));
      this.saving = true;
      this.apiService.saveCow(this.formatForm(this.cowFrom.value), this.imageFile, this.currentUser.id).subscribe((res) => {
        if (res.ok) {
@@ -170,5 +169,10 @@ export class AddCowPage implements OnInit {
 
   getinseminationCost(event: any) {
 
+  }
+
+  deleteImage() {
+    this.imageFile = null;
+    this.croppedImage = null;
   }
 }

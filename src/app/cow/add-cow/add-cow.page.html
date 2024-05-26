@@ -25,9 +25,12 @@
       </ion-col>
 
       <ion-col size="4">
+        <ion-button (click)="deleteImage()" *ngIf="imageFile && imageChangedEvent == null" style="position: absolute; z-index: 10; top: -25%; right: -10%;" fill="clear" mode="ios">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
         <ion-card button="" (click)="pickImage()">
           <img *ngIf="croppedImage" style="border-radius: 15px;" [src]="croppedImage">
-          <img *ngIf="data && !croppedImage" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(data.imagePath)">
+          <img *ngIf="data && data.imagePath && !croppedImage" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(data.imagePath)">
           <img *ngIf="!croppedImage && !data" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
         </ion-card>
         <input #imagePicker hidden="" type="file" (change)="fileChangeEvent($event)" />
@@ -148,7 +151,7 @@
     </div>
 
     <div>
-      <ion-button [disabled]="saving == true || cowFrom.invalid" (click)="saveOrUpdata()" expand="block" shape="round">
+      <ion-button [disabled]="saving == true || cowFrom.invalid" (click)="saveSeed()" expand="block" shape="round">
         {{ "GAMOU.SAVE" | translate}}
         <ion-icon style="margin-left: 10px;" name="save"></ion-icon>
         <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
