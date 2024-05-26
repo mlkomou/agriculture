@@ -67,6 +67,7 @@ currentTab: any = 'seed';
     translate.use(this.langStoreValue);
 
 
+
     // if (this.currentUser) {
     //   console.log('currentUser', this.currentUser);
     // }
@@ -296,6 +297,7 @@ currentTab: any = 'seed';
     this.countryName = text;
     this.flagvalue = flag;
     this.langStoreValue = lang;
+    console.log(this.langStoreValue);
     this.currentLang = lang;
     localStorage.setItem('lang', lang);
     this.languageService.setLanguage(lang);
