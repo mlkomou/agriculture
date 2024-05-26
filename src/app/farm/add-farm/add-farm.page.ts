@@ -47,6 +47,11 @@ export class AddFarmPage implements OnInit {
       }
     });
   }
+
+  deleteImage() {
+    this.imageFile = null;
+    this.croppedImage = null;
+  }
   pickImage() {
     this.imagePicker.nativeElement.click();
   }

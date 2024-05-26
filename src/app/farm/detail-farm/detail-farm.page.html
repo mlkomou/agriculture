@@ -22,7 +22,8 @@
       </ion-col>
 
       <ion-col size="4">
-        <img style="border-radius: 15px;" [src]="apiService.makeDownloadImage(farm.imagePath)">
+        <img *ngIf="farm.imagePath" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(farm.imagePath)">
+        <img *ngIf="!farm.imagePath" style="border-radius: 15px;" src="assets/img/graine.jpg">
       </ion-col>
     </ion-row>
   </div>

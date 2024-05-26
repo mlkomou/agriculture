@@ -32,6 +32,7 @@
           <img *ngIf="croppedImage" style="border-radius: 15px;" [src]="croppedImage">
           <img *ngIf="data && data.imagePath && !croppedImage" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(data.imagePath)">
           <img *ngIf="!croppedImage && !data" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
+          <img *ngIf="data && !data.imagePath && !croppedImage" style="border-radius: 15px;" [src]="'assets/img/photo.png'">
         </ion-card>
         <input #imagePicker hidden="" type="file" (change)="fileChangeEvent($event)" />
       </ion-col>
