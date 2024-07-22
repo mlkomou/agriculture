@@ -11,7 +11,9 @@
     <ion-row style="padding: 15px;">
       <ion-col size="8">
         <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-          <span style="font-size: 12px; color: green;">{{cow?.gender}}</span>
+            <span *ngIf="cow.gender == 'Taureau'" style="font-size: 12px; color: green;">{{ "GAMOU.TAUREAU" | translate }}</span>
+            <span *ngIf="cow.gender == 'Génisse'" style="font-size: 12px; color: green;">{{ "GAMOU.GENISSE" | translate }}</span>
+
         </div>
 
         <h3>ID: {{cow?.identification}}

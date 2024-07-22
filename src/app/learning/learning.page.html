@@ -16,18 +16,10 @@
 
 <ion-content [fullscreen]="true">
 
-
   <div>
-    <iframe width="420" height="200"
-            src="https://www.youtube.com/embed/SqwsepBTJ4Y">
-    </iframe> <iframe width="420" height="200"
-            src="https://www.youtube.com/embed/GFuM0_kvBcE">
+    <iframe *ngFor="let video of videos" width="420" height="200"
+            [src]="_sanitizer.bypassSecurityTrustResourceUrl(getVideoPath(video.videoPath))">
     </iframe>
-    <iframe width="420" height="200"
-            src="https://www.youtube.com/embed/zFdxU-73yAc">
-    </iframe>
-    <iframe width="420" height="200"
-            src="https://www.youtube.com/embed/2gzOEcBXdqU">
-    </iframe>
+
   </div>
 </ion-content>

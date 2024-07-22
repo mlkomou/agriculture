@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { DetailCowPageRoutingModule } from './detail-cow-routing.module';
 
 import { DetailCowPage } from './detail-cow.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DetailCowPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        DetailCowPageRoutingModule,
+        TranslateModule
+    ],
   declarations: [DetailCowPage]
 })
 export class DetailCowPageModule {}

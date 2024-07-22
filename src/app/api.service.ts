@@ -91,6 +91,10 @@ export class ApiService {
     return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/expense/${userId}`);
   }
 
+  getVideos(): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/videos/get-all`);
+  }
+
   public makeDownloadImage(filname: string): string {
     return `${environment.apiUrl}/downloads/${filname}`;
   }
