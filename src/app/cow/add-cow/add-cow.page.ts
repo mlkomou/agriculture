@@ -1,9 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Farm} from "../../model/farm";
-import {ModalController, PopoverController} from "@ionic/angular";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {IonModal, ModalController, PopoverController} from "@ionic/angular";
 import {ApiService} from "../../api.service";
-import {Preferences} from "@capacitor/preferences";
 import {Cow} from "../../model/cow";
 import {ImageCroppedEvent} from "ngx-image-cropper";
 import {DomSanitizer} from "@angular/platform-browser";
@@ -30,6 +28,7 @@ export class AddCowPage implements OnInit {
 
   inseminationDate: any;
   calvingDate: any;
+  @ViewChild('genderModal') genderModal: IonModal;
   constructor(private modalCtrl: ModalController,
               private fb: FormBuilder,
               public apiService: ApiService,
@@ -174,5 +173,13 @@ export class AddCowPage implements OnInit {
   deleteImage() {
     this.imageFile = null;
     this.croppedImage = null;
+  }
+
+  chooseGender(gender: string) {
+    this.cowFrom.patchValue({
+      gender: gender
+    });
+
+    this.genderModal.dismiss();
   }
 }
