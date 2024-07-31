@@ -62,11 +62,11 @@
       <div [formGroup]="seedFrom">
       <ion-row>
         <ion-col size="4">
-          <img src="assets/img/icons/identification.jpeg">
+          <img style="margin-top: 20px;" src="assets/img/icons/identification.jpeg">
         </ion-col>
         <ion-col size="8">
           <ion-item>
-            <ion-label position="floating">Identification</ion-label>
+            <ion-label position="floating">{{ "GAMOU.PARCELLE" | translate}}</ion-label>
             <ion-input type="text" formControlName="identification"></ion-input>
           </ion-item>
         </ion-col>
@@ -74,7 +74,7 @@
 
       <ion-row>
         <ion-col size="4">
-          <img src="assets/img/icons/superficie.jpeg">
+          <img style="margin-top: 20px;" src="assets/img/icons/superficie.jpeg">
         </ion-col>
         <ion-col size="8">
           <ion-item>
@@ -84,26 +84,26 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-icon size="4">
-          <img src="assets/img/icons/culture.png">
-        </ion-icon>
-        <ion-icon size="8">
+        <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 30px;" src="assets/img/icons/culture.png">
+        </ion-col>
+        <ion-col size="8">
           <ion-item>
             <ion-label position="floating">{{ "GAMOU.CULTURE" | translate}}</ion-label>
             <ion-input type="text" formControlName="crop"></ion-input>
           </ion-item>
-        </ion-icon>
+        </ion-col>
       </ion-row>
 
 
      <ion-row>
        <ion-col size="4">
-         <img src="assets/img/icons/semence_cout_ha.png">
+         <img style="margin-top: 50px;" src="assets/img/icons/semence_cout_ha.png">
        </ion-col>
        <ion-col size="8">
          <ion-item>
-           <ion-label position="floating">{{ "GAMOU.SEEDCOST" | translate }}</ion-label>
+           <ion-label class="labelEl" position="floating">{{ "GAMOU.SEEDCOST" | translate }}</ion-label>
            <ion-input type="number" formControlName="seedCost"></ion-input>
          </ion-item>
        </ion-col>
@@ -111,7 +111,31 @@
 
         <ion-row>
           <ion-col size="4">
-            <img style="margin-top: 30px;" src="assets/img/icons/main_oeuvre_cout.png">
+            <img style="margin-top: 50px;" src="assets/img/icons/engrais_cout_ha.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label class="labelEl" position="floating">{{ "GAMOU.FERTILIZERCOST" | translate }}</ion-label>
+              <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="4">
+            <img style="margin-top: 50px;" src="assets/img/icons/semi_cout_ha.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label class="labelEl" position="floating">{{ "GAMOU.COUTSSEMI" | translate }}</ion-label>
+              <ion-input type="number" formControlName="semiCost"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="4">
+            <img style="margin-top: 50px;" src="assets/img/icons/herbicide_couts_ha.png">
           </ion-col>
           <ion-col size="8">
             <ion-item>
@@ -123,33 +147,10 @@
           </ion-col>
         </ion-row>
 
-      <ion-row>
-        <ion-col size="4">
-          <img style="margin-top: 30px;" src="assets/img/icons/semi_cout_ha.png">
-        </ion-col>
-        <ion-col size="8">
-          <ion-item>
-            <ion-label class="labelEl" position="floating">{{ "GAMOU.COUTSSEMI" | translate }}</ion-label>
-            <ion-input type="number" formControlName="semiCost"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
 
       <ion-row>
         <ion-col size="4">
-          <img src="assets/img/icons/engrais_cout_ha.png">
-        </ion-col>
-        <ion-col size="8">
-          <ion-item>
-            <ion-label position="floating">{{ "GAMOU.FERTILIZERCOST" | translate }}</ion-label>
-            <ion-input type="number" formControlName="fertilizerCost1"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="4">
-          <img style="margin-top: 30px;" src="assets/img/icons/main_oeuvre_cout.png">
+          <img style="margin-top: 50px;" src="assets/img/icons/main_oeuvre_cout.png">
         </ion-col>
         <ion-col size="8">
           <ion-item>
@@ -159,40 +160,39 @@
         </ion-col>
       </ion-row>
 
-        <ion-item>
-          <ion-label position="floating">{{ "GAMOU.COUTSIRRIGATION" | translate }}</ion-label>
-          <ion-input type="number" formControlName="irrigationCost"></ion-input>
-        </ion-item>
+        <ion-row>
+          <ion-col size="4">
+            <img style="margin-top: 30px;" src="assets/img/icons/rendement.jpeg">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label class="labelEl" position="floating">{{ "GAMOU.RENDEMENT" | translate }}</ion-label>
+              <ion-input type="number" formControlName="yield"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-        <ion-item>
-          <ion-label position="floating">{{ "GAMOU.COUTSDIVERS" | translate }}</ion-label>
-          <ion-input type="number" formControlName="diverseCost"></ion-input>
-        </ion-item>
+        <ion-row>
+          <ion-col size="4">
+            <img style="margin-top: 30px;" src="assets/img/icons/prix_marche_kg.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label class="labelEl" position="floating">{{ "GAMOU.PRIXCEREALE" | translate }}</ion-label>
+              <ion-input type="number" formControlName="marketPriceCereals"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-      <ion-row>
-        <ion-col size="4">
-          <img style="margin-top: 30px;" src="assets/img/icons/rendement.jpeg">
-        </ion-col>
-        <ion-col size="8">
-          <ion-item>
-            <ion-label class="labelEl" position="floating">{{ "GAMOU.RENDEMENT" | translate }}</ion-label>
-            <ion-input type="number" formControlName="yield"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">{{ "GAMOU.COUTSIRRIGATION" | translate }}</ion-label>-->
+<!--          <ion-input type="number" formControlName="irrigationCost"></ion-input>-->
+<!--        </ion-item>-->
 
-    <ion-row>
-      <ion-col size="4">
-        <img style="margin-top: 30px;" src="assets/img/icons/prix_marche_kg.png">
-      </ion-col>
-      <ion-col size="8">
-        <ion-item>
-          <ion-label class="labelEl" position="floating">{{ "GAMOU.PRIXCEREALE" | translate }}</ion-label>
-          <ion-input type="number" formControlName="marketPriceCereals"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-
+<!--        <ion-item>-->
+<!--          <ion-label position="floating">{{ "GAMOU.COUTSDIVERS" | translate }}</ion-label>-->
+<!--          <ion-input type="number" formControlName="diverseCost"></ion-input>-->
+<!--        </ion-item>-->
 
       </div>
 

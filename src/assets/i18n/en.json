@@ -36,6 +36,11 @@
     "NEWFARM": "New field",
     "UPDATEFIELD": "Editing the field",
     "TAUREAU": "Bull",
-    "GENISSE": "Heifer"
+    "GENISSE": "Heifer",
+    "PARCELLE": "Plot",
+    "NUMERO": "Numero",
+    "DEPENSETOTALE": "Total Expenditure to Date",
+    "REVENUTOTAL": "Total Revenues to date",
+    "PROFIT": "Profits to date"
   }
 }

@@ -30,91 +30,279 @@
     </ion-row>
   </div>
 
-  <div>
-    <ion-card mode="ios">
+  <div style="padding: 15px;">
+    <div>
       <ion-row>
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Géniteur</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.genitor}}</span>
+        <ion-col style="margin-top: 20px;" size="4" class="ion-no-padding ion-no-margin">
+          <img src="assets/img/icons/numero.png">
         </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Date insemination</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationDate | date: 'yyyy/MM/dd'}}</span>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">{{ "GAMOU.NUMERO" | translate }}</ion-label>
+            <ion-input readonly type="text" [value]="cow?.identification"></ion-input>
+          </ion-item>
         </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Coûts insemination</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationCost}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Date vêlage</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.calvingDate | date: 'yyyy/MM/dd'}}</span>
-        </ion-col>
-
-
-
-
-
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Profit</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{getProfitValue(cow)}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Dépenses</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;"> {{getExpense(cow)}} </span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Revenu</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{getIncome(cow)}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Coûts aliment bétail</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.feed}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Coûts vétérinaire</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.vetCost}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="flask-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Production laitière/kg/jour</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkProduction}}</span>
-        </ion-col>
-
-        <ion-col class="ion-text-center" size="4">
-          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>
-          <span style="font-size: 12px;">Prix du lait</span> <br>
-          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkPrice}}</span>
-        </ion-col>
-
       </ion-row>
-    </ion-card>
+
+      <ion-row>
+        <ion-col style="margin-top: 20px;" size="4" class="ion-no-padding ion-no-margin">
+          <img *ngIf="cow?.gender == 'Taureau'" src="assets/img/icons/papa.png">
+          <img *ngIf="cow?.gender == 'Génisse'" src="assets/img/icons/mama.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item id="open-modal">
+            <ion-label>
+              <p style="color: black">{{ "GAMOU.GENDER" | translate}}</p>
+              <h2 *ngIf="cow?.gender == 'Taureau'">{{"GAMOU.TAUREAU" | translate}}</h2>
+              <h2 *ngIf="cow?.gender == 'Génisse'">{{"GAMOU.GENISSE" | translate}}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col size="4">
+          <img src="assets/img/icons/papa.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">{{ "GAMOU.GENITEUR" | translate}}</ion-label>
+            <ion-input type="text" [value]="cow?.genitor" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img src="assets/img/icons/mama.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">{{ "GAMOU.GENITRICE" | translate }}</ion-label>
+            <ion-input type="text" [value]="cow?.genitrice" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/insemination_jour.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">{{ "GAMOU.DATEINSEMINATION" | translate }}</ion-label>
+            <ion-input type="text" [value]="cow?.inseminationDate | date: 'dd/MM/yyyy'" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 40px;" src="assets/img/icons/insemination_cout.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label class="labelEl" position="floating">
+              {{"GAMOU.COUTINSEMINATION" | translate}}
+            </ion-label>
+            <ion-input [value]="cow?.inseminationCost" type="number" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/velage_jour.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">{{ "GAMOU.DATEINSEMINATION" | translate }}</ion-label>
+            <ion-input type="text" [value]="cow?.calvingDate | date: 'dd/MM/yyyy'" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/aliment_cout.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.COUTSALIMANENTBETAIL" | translate}}
+            </ion-label>
+            <ion-input readonly [value]="cow?.feed" type="number" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/vet_cout.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.COUTSVETERINAIRE" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="cow?.vetCost" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/lait_kg.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.PRODUCTIONLAIT" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="cow?.milkProduction" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/litre_prix_vent.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.PRIXLAIT" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="cow?.milkPrice" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/depense_total_an.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.DEPENSETOTALE" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="cow?.inseminationCost + cow?.feed + cow?.vetCost" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/revenu_total_an.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.REVENUTOTAL" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="cow?.milkPrice * cow?.milkProduction" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <img style="margin-top: 20px;" src="assets/img/icons/profit.png">
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating">
+              {{"GAMOU.PROFIT" | translate}}
+            </ion-label>
+            <ion-input type="number" [value]="(cow?.milkPrice * cow?.milkProduction) - (cow?.inseminationCost + cow?.feed + cow?.vetCost) " readonly></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+    </div>
   </div>
 
-  <div>
-<!--    <ion-card>-->
-<!--      <ion-item>-->
-<!--        <ion-label position="floating"></ion-label>-->
-<!--        <ion-icon slot="start" name="person"></ion-icon>-->
-<!--        <ion-input></ion-input>-->
-<!--      </ion-item>-->
+<!--  <div>-->
+<!--    <ion-card mode="ios">-->
+<!--      <ion-row>-->
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Géniteur</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.genitor}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Date insemination</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationDate | date: 'yyyy/MM/dd'}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Coûts insemination</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.inseminationCost}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="calendar-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Date vêlage</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.calvingDate | date: 'yyyy/MM/dd'}}</span>-->
+<!--        </ion-col>-->
+
+
+
+
+
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Profit</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{getProfitValue(cow)}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Dépenses</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;"> {{getExpense(cow)}} </span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Revenu</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{getIncome(cow)}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="heart-circle-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Coûts aliment bétail</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.feed}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Coûts vétérinaire</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.vetCost}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="flask-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Production laitière/kg/jour</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkProduction}}</span>-->
+<!--        </ion-col>-->
+
+<!--        <ion-col class="ion-text-center" size="4">-->
+<!--          <ion-icon name="cash-outline" size="25" color="success"></ion-icon> <br>-->
+<!--          <span style="font-size: 12px;">Prix du lait</span> <br>-->
+<!--          <span style="color: black; font-size: 12px; font-weight: bold;">{{cow?.milkPrice}}</span>-->
+<!--        </ion-col>-->
+
+<!--      </ion-row>-->
 <!--    </ion-card>-->
+<!--  </div>-->
+
+  <div>
+
   </div>
 </ion-content>
