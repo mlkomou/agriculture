@@ -314,7 +314,7 @@ export class DashboardPage implements OnInit {
         type: 'column'
       },
       title: {
-        text: 'Yield by Seed'
+        text: 'Yield by Crop'
       },
       subtitle: {
         text: ''

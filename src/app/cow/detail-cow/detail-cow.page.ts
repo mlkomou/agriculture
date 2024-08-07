@@ -19,6 +19,9 @@ export class DetailCowPage implements OnInit {
     }
   }
 
+
+
+
   async goToAdd(data: Cow) {
     const modal = await this.modalCtrl.create({
       component: AddCowPage,

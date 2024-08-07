@@ -15,9 +15,9 @@
     "DATEINSEMINATION": "Insemination date",
     "COUTINSEMINATION": "Insemination cost",
     "DATEVELAGE": "Calving date",
-    "COUTSALIMANENTBETAIL": "Livestock feed cost",
-    "COUTSVETERINAIRE": "Veterinary cost",
-    "PRODUCTIONLAIT": "Dairy production/Kgs/day",
+    "COUTSALIMANENTBETAIL": "Feed cost",
+    "COUTSVETERINAIRE": "Vet costs",
+    "PRODUCTIONLAIT": "Daily production/Kgs/day",
     "PRIXLAIT": "Milk price",
     "SAVE": "Save",
     "NEWANIMAL": "New animal",
@@ -38,8 +38,8 @@
     "TAUREAU": "Bull",
     "GENISSE": "Heifer",
     "PARCELLE": "Plot",
-    "NUMERO": "Numero",
-    "DEPENSETOTALE": "Total Expenditure to Date",
+    "NUMERO": "Number",
+    "DEPENSETOTALE": "Total Expensive to Date",
     "REVENUTOTAL": "Total Revenues to date",
     "PROFIT": "Profits to date"
   }

@@ -37,6 +37,8 @@ export class AddCowPage implements OnInit {
 
   ngOnInit() {
     if (this.data) {
+      this.inseminationDate = this.data.inseminationDate;
+      this.calvingDate = this.data.calvingDate;
       this.createForm(this.data);
     } else {
       this.createForm(new Cow());
@@ -129,8 +131,23 @@ export class AddCowPage implements OnInit {
       feed: cow.feed,
       vetCost: cow.vetCost,
       milkPrice: cow.milkPrice,
+      // new attr
       genitor: cow.genitor,
-      imagePath: cow.imagePath
+      genitrice: cow.genitrice,
+      // en new attr
+      imagePath: cow.imagePath,
+      // id: cow.id,
+      // identification: cow.identification,
+      // gender: cow.gender,
+      // inseminationCost: cow.inseminationCost,
+      // inseminationDate: new Date(this.inseminationDate),
+      // calvingDate: new Date(this.calvingDate),
+      // milkProduction: cow.milkProduction,
+      // feed: cow.feed,
+      // vetCost: cow.vetCost,
+      // milkPrice: cow.milkPrice,
+      // genitor: cow.genitor,
+      // imagePath: cow.imagePath
     }
   }
   saveSeed() {
