@@ -95,6 +95,13 @@ export class ApiService {
     return this.httpClient.get<Iresponse>(`${this.apiUrl}/videos/get-all`);
   }
 
+  deleteSeed(seedId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/seeds/delete/${seedId}`);
+  }
+  deleteCow(cowId: number): Observable<Iresponse> {
+    return this.httpClient.get<Iresponse>(`${this.apiUrl}/cows/delete/${cowId}`);
+  }
+
   public makeDownloadImage(filname: string): string {
     return `${environment.apiUrl}/downloads/${filname}`;
   }

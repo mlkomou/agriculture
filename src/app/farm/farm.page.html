@@ -49,9 +49,7 @@
 <!--            <span style="color: white; margin-left: 15px;"> Gamou</span> <br>-->
           </ion-col>
           <ion-col class="ion-text-right" size="4">
-            <div style="height: 25px; width: 80px;  background-color: #d6fad6; text-align: center; border-radius: 15px;">
-              <span style="font-size: 12px; color: green;">{{seeds?.length}} Champs</span>
-            </div>
+            <ion-badge color="success"> {{seeds.length}} {{ "GAMOU.CHAMP" | translate}}</ion-badge>
           </ion-col>
         </ion-row>
       </div>
@@ -68,17 +66,15 @@
         <div *ngIf="seed.imagePath" class="itmImage" style="background-image: url('{{apiService.makeDownloadImage(seed?.imagePath)}}')">
 
         </div>
-        <div *ngIf="!seed.imagePath">
-          <img src="assets/img/graine.jpg" style="height: 150px;">
+        <div *ngIf="!seed.imagePath" style="height: 150px;">
+
         </div>
         <ion-row>
           <ion-col class="ion-text-left" size="8">
-            <span> ID: {{seed?.identification}} </span> <br>
+            <span> {{ "GAMOU.PARCELLE" | translate}}: {{seed?.identification}} </span> <br>
           </ion-col>
           <ion-col size="4">
-            <div style="height: 25px; width: 80px; padding-top: 3px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-              <span style="font-size: 12px; color: green;">{{seed?.crop}}</span>
-            </div>
+            <ion-badge color="success">{{seed?.crop}}</ion-badge>
           </ion-col>
         </ion-row>
       </ion-card>

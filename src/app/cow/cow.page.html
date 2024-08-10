@@ -50,10 +50,16 @@
 <!--          <span style="color: white; margin-left: 15px;"> Gamou</span> <br>-->
         </ion-col>
         <ion-col class="ion-text-right" size="4">
-          <div style="height: 25px; width: 80px;  background-color: #d6fad6; text-align: center; border-radius: 15px;">
-            <div style="font-size: 12px; color: green;" *ngIf="cows?.length > 1">{{cows?.length}} animaux</div>
-            <div style="font-size: 12px; color: green;" *ngIf="cows?.length == 1 || cows?.length == 0">{{cows?.length}} animal</div>
-          </div>
+          <ion-badge color="success" *ngIf="cows?.length > 1">
+            {{cows?.length}} {{ "GAMOU.ANIMAUX" | translate }}
+          </ion-badge>
+          <ion-badge color="success" *ngIf="cows?.length == 1 || cows?.length == 0">
+            {{cows?.length}} animal
+          </ion-badge>
+<!--          <div style="height: 25px; width: 80px;  background-color: #d6fad6; text-align: center; border-radius: 15px;">-->
+<!--            <div style="font-size: 12px; color: green;" *ngIf="cows?.length > 1">{{cows?.length}} {{ "GAMOU.ANIMAUX" | translate }}</div>-->
+<!--            <div style="font-size: 12px; color: green;" *ngIf="cows?.length == 1 || cows?.length == 0">{{cows?.length}} animal</div>-->
+<!--          </div>-->
         </ion-col>
       </ion-row>
     </div>
@@ -71,18 +77,24 @@
 
       </div>
 
-      <div *ngIf="!cow.imagePath">
-        <img src="assets/img/elevage.png" style="height: 150px;">
+      <div *ngIf="!cow.imagePath" style="height: 150px;">
+
       </div>
       <ion-row>
         <ion-col class="ion-text-left" size="8">
-         <span> ID: {{cow?.identification}} </span> <br>
+         <span> {{ "GAMOU.NUMERO" | translate}}: {{cow?.identification}} </span> <br>
         </ion-col>
         <ion-col size="4">
-          <div style="height: 25px; width: 80px; padding-top: 3px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-            <span *ngIf="cow.gender == 'Taureau'" style="font-size: 12px; color: green;">{{ "GAMOU.TAUREAU" | translate }}</span>
-            <span *ngIf="cow.gender == 'Génisse'" style="font-size: 12px; color: green;">{{ "GAMOU.GENISSE" | translate }}</span>
-          </div>
+          <ion-badge color="success" *ngIf="cow.gender == 'Mal'">
+            {{ "GAMOU.MAL" | translate }}
+          </ion-badge>
+          <ion-badge color="success" *ngIf="cow.gender == 'Femelle'">
+            {{ "GAMOU.FEMELLE" | translate }}
+          </ion-badge>
+<!--          <div style="height: 25px; width: 80px; padding-top: 3px; background-color: #d6fad6; text-align: center; border-radius: 15px;">-->
+<!--            <span *ngIf="cow.gender == 'Taureau'" style="font-size: 12px; color: green;">{{ "GAMOU.TAUREAU" | translate }}</span>-->
+<!--            <span *ngIf="cow.gender == 'Génisse'" style="font-size: 12px; color: green;">{{ "GAMOU.GENISSE" | translate }}</span>-->
+<!--          </div>-->
         </ion-col>
       </ion-row>
     </ion-card>

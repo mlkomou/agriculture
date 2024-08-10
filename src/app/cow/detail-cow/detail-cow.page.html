@@ -1,8 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="closeDetail()" color="primary" fill="clear" mode="ios">
-      <ion-icon name="chevron-back" size="25"></ion-icon>
-    </ion-button>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="closeDetail()" color="primary" fill="clear" mode="ios">
+          <ion-icon name="chevron-back" size="25"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right">
+        <ion-button [disabled]="deleting == true" (click)="deleteItem()" color="danger" fill="clear" mode="ios">
+          <ion-icon name="trash" size="25"></ion-icon>
+        </ion-button>
+        <ion-spinner *ngIf="deleting == true" name="crescent" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -10,11 +20,17 @@
   <div>
     <ion-row style="padding: 15px;">
       <ion-col size="8">
-        <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">
-            <span *ngIf="cow.gender == 'Taureau'" style="font-size: 12px; color: green;">{{ "GAMOU.TAUREAU" | translate }}</span>
-            <span *ngIf="cow.gender == 'Génisse'" style="font-size: 12px; color: green;">{{ "GAMOU.GENISSE" | translate }}</span>
+        <ion-badge color="success" *ngIf="cow.gender == 'Mal'">
+          {{ "GAMOU.MAL" | translate }}
+        </ion-badge>
+        <ion-badge color="success" *ngIf="cow.gender == 'Femelle'">
+          {{ "GAMOU.FEMELLE" | translate }}
+        </ion-badge>
+<!--        <div style="height: 25px; width: 80px; background-color: #d6fad6; text-align: center; border-radius: 15px;">-->
+<!--            <span *ngIf="cow.gender == 'Taureau'" style="font-size: 12px; color: green;">{{ "GAMOU.TAUREAU" | translate }}</span>-->
+<!--            <span *ngIf="cow.gender == 'Génisse'" style="font-size: 12px; color: green;">{{ "GAMOU.GENISSE" | translate }}</span>-->
 
-        </div>
+<!--        </div>-->
 
         <h3>ID: {{cow?.identification}}
         </h3>
@@ -25,7 +41,7 @@
 
       <ion-col size="4">
         <img *ngIf="cow.imagePath" style="border-radius: 15px;" [src]="apiService.makeDownloadImage(cow.imagePath)">
-        <img *ngIf="!cow.imagePath" style="border-radius: 15px;" src="assets/img/elevage.png">
+<!--        <img *ngIf="!cow.imagePath" style="border-radius: 15px;" src="assets/img/elevage.png">-->
       </ion-col>
     </ion-row>
   </div>
@@ -46,15 +62,14 @@
 
       <ion-row>
         <ion-col style="margin-top: 20px;" size="4" class="ion-no-padding ion-no-margin">
-          <img *ngIf="cow?.gender == 'Taureau'" src="assets/img/icons/papa.png">
-          <img *ngIf="cow?.gender == 'Génisse'" src="assets/img/icons/mama.png">
+          <img  src="assets/img/icons/genre.png">
         </ion-col>
         <ion-col size="8">
           <ion-item id="open-modal">
             <ion-label>
               <p style="color: black">{{ "GAMOU.GENDER" | translate}}</p>
-              <h2 *ngIf="cow?.gender == 'Taureau'">{{"GAMOU.TAUREAU" | translate}}</h2>
-              <h2 *ngIf="cow?.gender == 'Génisse'">{{"GAMOU.GENISSE" | translate}}</h2>
+              <h2 *ngIf="cow?.gender == 'Mal'">{{"GAMOU.MAL" | translate}}</h2>
+              <h2 *ngIf="cow?.gender == 'Femelle'">{{"GAMOU.FEMELLE" | translate}}</h2>
             </ion-label>
           </ion-item>
         </ion-col>

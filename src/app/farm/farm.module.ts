@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FarmPageRoutingModule } from './farm-routing.module';
 
 import { FarmPage } from './farm.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    FarmPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        FarmPageRoutingModule,
+        TranslateModule
+    ],
   declarations: [FarmPage]
 })
 export class FarmPageModule {}

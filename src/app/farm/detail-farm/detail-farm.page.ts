@@ -12,6 +12,7 @@ import {AddFarmPage} from "../add-farm/add-farm.page";
 export class DetailFarmPage implements OnInit {
 
   @Input() farm: Farm;
+  deleting: boolean = false;
   constructor(private modalCtrl: ModalController,
               public apiService: ApiService) { }
 
@@ -61,5 +62,20 @@ export class DetailFarmPage implements OnInit {
 
   closeDetail() {
     this.modalCtrl.dismiss();
+  }
+
+  deleteItem() {
+    this.deleting = true;
+    this.apiService.deleteSeed(this.farm.id).subscribe((res) => {
+      console.log(res);
+      if (res.ok) {
+        this.deleting = false;
+        this.modalCtrl.dismiss(2);
+      } else {
+        this.deleting = false;
+      }
+    }, error => {
+      this.deleting = false;
+    });
   }
 }

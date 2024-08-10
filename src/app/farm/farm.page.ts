@@ -37,6 +37,11 @@ export class FarmPage implements OnInit {
       }
     });
     await modal.present();
+    modal.onDidDismiss().then((result) => {
+      if (result.data == 2) {
+        this.getFarms(this.page, this.size);
+      }
+    });
   }
 
   getFarms(page: number, size: number) {

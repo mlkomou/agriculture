@@ -11,6 +11,7 @@ import {AddCowPage} from "../add-cow/add-cow.page";
 })
 export class DetailCowPage implements OnInit {
 @Input() cow: Cow;
+  deleting: boolean = false;
   constructor(private modalCtrl: ModalController, public apiService: ApiService) { }
 
   ngOnInit() {
@@ -66,5 +67,19 @@ export class DetailCowPage implements OnInit {
 
   closeDetail() {
     this.modalCtrl.dismiss();
+  }
+
+  deleteItem() {
+    this.deleting = true;
+    this.apiService.deleteCow(this.cow.id).subscribe((res) => {
+      if (res.ok) {
+        this.deleting = false;
+        this.modalCtrl.dismiss(2);
+      } else {
+        this.deleting = false;
+      }
+    }, error => {
+      this.deleting = false;
+    });
   }
 }

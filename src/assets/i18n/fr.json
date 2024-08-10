@@ -3,7 +3,7 @@
     "HOME": {
       "ELEVAGE": "Elevage",
       "AGRICULTURE": "Agriculture",
-      "DASHBOARD": "Tableau de board",
+      "DASHBOARD": "Résumé",
       "LEARNING": "Apprentissage",
       "MARKET": "Marché",
       "FRENCH": "Français",
@@ -41,7 +41,12 @@
     "NUMERO": "Numéro",
     "DEPENSETOTALE": "Depenses Totales a ce jour",
     "REVENUTOTAL": "Revenues Totales a ce jour",
-    "PROFIT": "Profits a ce jour"
+    "PROFIT": "Profits a ce jour",
+    "MAL": "Mal",
+    "FEMELLE": "Femelle",
+    "ANIMAUX": "Animaux",
+    "MODIFCHAMP": "Modification du champs",
+    "CHAMP": "Champ"
 
   }
 }

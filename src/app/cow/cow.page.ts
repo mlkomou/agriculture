@@ -37,6 +37,11 @@ export class CowPage implements OnInit {
       }
     });
     await modal.present();
+    modal.onDidDismiss().then((res) => {
+      if (res.data == 2) {
+        this.getCows(this.page, this.size);
+      }
+    })
   }
 
   getCows(page: number, size: number) {
@@ -61,8 +66,10 @@ export class CowPage implements OnInit {
     });
     await modal.present();
     modal.onDidDismiss().then((result) => {
+      console.log(result);
       if (result.data) {
         this.getCows(this.page, this.size);
+
       }
     });
   }

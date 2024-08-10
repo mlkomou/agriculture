@@ -37,10 +37,15 @@
     "UPDATEFIELD": "Editing the field",
     "TAUREAU": "Bull",
     "GENISSE": "Heifer",
-    "PARCELLE": "Plot",
+    "PARCELLE": "Field",
     "NUMERO": "Number",
     "DEPENSETOTALE": "Total Expensive to Date",
     "REVENUTOTAL": "Total Revenues to date",
-    "PROFIT": "Profits to date"
+    "PROFIT": "Profits to date",
+    "MAL": "Male",
+    "FEMELLE": "Female",
+    "ANIMAUX": "Animals",
+    "MODIFCHAMP": "Update of field",
+    "CHAMP": "Field"
   }
 }
