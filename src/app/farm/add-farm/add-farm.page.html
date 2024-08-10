@@ -57,8 +57,7 @@
     </div>
   </div>
 
-  <div style="padding: 15px;">
-    <div style="padding: 15px;">
+  <div style="padding: 30px;">
       <div [formGroup]="seedFrom">
       <ion-row>
         <ion-col size="4">
@@ -121,18 +120,6 @@
           </ion-col>
         </ion-row>
 
-<!--        <ion-row>-->
-<!--          <ion-col size="4">-->
-<!--            <img style="margin-top: 50px;" src="assets/img/icons/semi_cout_ha.png">-->
-<!--          </ion-col>-->
-<!--          <ion-col size="8">-->
-<!--            <ion-item>-->
-<!--              <ion-label class="labelEl" position="floating">{{ "GAMOU.COUTSSEMI" | translate }}</ion-label>-->
-<!--              <ion-input type="number" formControlName="semiCost"></ion-input>-->
-<!--            </ion-item>-->
-<!--          </ion-col>-->
-<!--        </ion-row>-->
-
         <ion-row>
           <ion-col size="4">
             <img style="margin-top: 50px;" src="assets/img/icons/herbicide_couts_ha.png">
@@ -159,6 +146,18 @@
           </ion-item>
         </ion-col>
       </ion-row>
+
+        <ion-row>
+          <ion-col size="4">
+            <img style="margin-top: 30px;" src="assets/img/icons/main_oeuvre_cout.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label class="labelEl" position="floating">{{ "GAMOU.COUTSDIVERS" | translate }}</ion-label>
+              <ion-input type="number" formControlName="diverseCost"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
         <ion-row>
           <ion-col size="4">
@@ -203,6 +202,5 @@
         <ion-spinner *ngIf="saving == true" style="margin-left: 20px;" name="crescent"></ion-spinner>
       </ion-button>
     </div>
-  </div>
   </div>
 </ion-content>
