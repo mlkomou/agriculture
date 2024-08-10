@@ -46,6 +46,7 @@
     "FEMELLE": "Female",
     "ANIMAUX": "Animals",
     "MODIFCHAMP": "Update of field",
-    "CHAMP": "Field"
+    "CHAMP": "Field",
+    "HELLO": "Hello"
   }
 }
