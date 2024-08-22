@@ -27,7 +27,7 @@
       </ion-col>
 
       <ion-col size="4">
-        <ion-button (click)="deleteImage()" *ngIf="imageFile && imageChangedEvent == null" style="position: absolute; z-index: 10; top: -25%; right: -10%;" fill="clear" mode="ios">
+        <ion-button (click)="deleteImage()" *ngIf="imageFile && imageChangedEvent === null" style="position: absolute; z-index: 10; top: -25%; right: -10%;" fill="clear" mode="ios">
           <ion-icon name="trash" color="danger"></ion-icon>
         </ion-button>
         <ion-card button="" (click)="pickImage()">
@@ -63,7 +63,7 @@
     <div [formGroup]="cowFrom">
      <ion-row>
        <ion-col style="margin-top: 20px;" size="4" class="ion-no-padding ion-no-margin">
-         <img src="assets/img/icons/numero.png">
+         <img src="assets/img/new_icon/numero.jpg">
        </ion-col>
        <ion-col size="8">
          <ion-item>
@@ -75,7 +75,7 @@
 
    <ion-row>
      <ion-col style="margin-top: 20px;" size="4" class="ion-no-padding ion-no-margin">
-       <img src="assets/img/icons/genre.png">
+       <img src="assets/img/new_icon/genre.jpg">
      </ion-col>
      <ion-col>
        <ion-item>
@@ -127,7 +127,7 @@
 
       <ion-row>
         <ion-col size="4">
-          <img src="assets/img/icons/papa.png">
+          <img src="assets/img/new_icon/papa.jpg">
         </ion-col>
         <ion-col size="8">
           <ion-item>
@@ -139,7 +139,7 @@
 
       <ion-row>
         <ion-col size="4">
-          <img src="assets/img/icons/mama.png">
+          <img src="assets/img/new_icon/mama.jpg">
         </ion-col>
         <ion-col size="8">
           <ion-item>
@@ -151,7 +151,7 @@
 
     <ion-row>
       <ion-col size="4">
-        <img style="margin-top: 20px;" src="assets/img/icons/insemination_jour.png">
+        <img style="margin-top: 20px;" src="assets/img/new_icon/insemination_jour.jpg">
       </ion-col>
       <ion-col size="8">
         <ion-item button (click)="chooseInseminationDate()">
@@ -168,7 +168,7 @@
 
      <ion-row>
        <ion-col size="4">
-         <img style="margin-top: 40px;" src="assets/img/icons/insemination_cout.png">
+         <img style="margin-top: 40px;" src="assets/img/new_icon/insemination_cout.jpg">
        </ion-col>
        <ion-col size="8">
          <ion-item>
@@ -182,7 +182,7 @@
 
     <ion-row>
       <ion-col size="4">
-        <img style="margin-top: 20px;" src="assets/img/icons/velage_jour.png">
+        <img style="margin-top: 20px;" src="assets/img/new_icon/velage.jpg">
       </ion-col>
       <ion-col size="8">
         <ion-item button (click)="chooseCalvingDate()">
@@ -199,7 +199,7 @@
 
    <ion-row>
      <ion-col size="4">
-       <img style="margin-top: 20px;" src="assets/img/icons/aliment_cout.png">
+       <img style="margin-top: 20px;" src="assets/img/new_icon/aliment_cout.jpg">
      </ion-col>
      <ion-col size="8">
        <ion-item>
@@ -213,7 +213,7 @@
 
     <ion-row>
       <ion-col size="4">
-        <img style="margin-top: 20px;" src="assets/img/icons/vet_cout.png">
+        <img style="margin-top: 20px;" src="assets/img/new_icon/vet_cout.jpg">
       </ion-col>
       <ion-col size="8">
         <ion-item>
@@ -227,7 +227,7 @@
 
     <ion-row>
       <ion-col size="4">
-        <img style="margin-top: 20px;" src="assets/img/icons/lait_kg.png">
+        <img style="margin-top: 20px;" src="assets/img/new_icon/lait_production.jpg">
       </ion-col>
       <ion-col size="8">
         <ion-item>
@@ -241,7 +241,7 @@
 
     <ion-row>
       <ion-col size="4">
-        <img style="margin-top: 20px;" src="assets/img/icons/litre_prix_vent.png">
+        <img style="margin-top: 20px;" src="assets/img/new_icon/lait_prix.jpg">
       </ion-col>
       <ion-col size="8">
         <ion-item>
