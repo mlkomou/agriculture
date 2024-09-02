@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PopoverController} from "@ionic/angular";
+import {ModalController, PopoverController} from "@ionic/angular";
 
 @Component({
   selector: 'app-date',
@@ -9,7 +9,7 @@ import {PopoverController} from "@ionic/angular";
 export class DatePage implements OnInit {
   dateChoosed: Date;
   taday = new Date().toISOString();
-  constructor(private popoverCtrl: PopoverController) { }
+  constructor(private popoverCtrl: ModalController) { }
 
   ngOnInit() {
   }

@@ -33,7 +33,7 @@ export class AddCowPage implements OnInit {
               private fb: FormBuilder,
               public apiService: ApiService,
               private sanitizer: DomSanitizer,
-              private popover: PopoverController) { }
+              private popover: ModalController) { }
 
   ngOnInit() {
     if (this.data) {
